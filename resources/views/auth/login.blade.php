@@ -42,11 +42,12 @@
                     <div class="text-center">
                         <div class="h4">Êtes-vous déjà inscrit sur la plateforme ?</div>
 
-                            <a href="{{ route('register') }}"
-                                class="text-white text-gradient text-bold btn btn-warning w-100 my-2 fw-bold"> Si non, Inscrivez-vous ici</a>
+                        <a href="{{ route('register') }}"
+                            class="text-white text-gradient text-bold btn btn-warning w-100 my-2 fw-bold"> Si non,
+                            Inscrivez-vous ici</a>
 
-                            <button class="text-white text-gradient text-bold btn btn-success w-100 my-2 fw-bold"
-                                data-bs-dismiss="modal">Oui j'ai déjà un compte</button>
+                        <button class="text-white text-gradient text-bold btn btn-success w-100 my-2 fw-bold"
+                            data-bs-dismiss="modal">Oui j'ai déjà un compte</button>
 
 
 
@@ -73,6 +74,7 @@
             </div>
         </div>
     </div>
+    {{-- @include('auth.resetAccountModal') --}}
 @endsection
 @section('content')
     <form method="POST" action="{{ route('login') }}" role="form" class="text-start">
@@ -100,11 +102,9 @@
             </div>
             <div class="col-12 text-start my-1">
                 <label for="" class="text-dark text-bold">Mot de passe</label>
-
                 <div class="pass_show_hide">
-
                     <input id="password" type="password" class="form-control @error('password') is-invalid @enderror"
-                    name="password" required autocomplete="current-password">
+                        name="password" required autocomplete="current-password">
                 </div>
                 <small id="password" class="text-muted ">
                     <i class="fa-solid fa-circle-info text-italic me-1 "></i>
@@ -137,6 +137,11 @@
                 <div><label>|</label></div>
                 <div><a href="{{ route('register') }}" class="text-info text-gradient text-bold">Inscrivez-vous</a>
                 </div>
+            </div>
+            <div class="col-12">
+                  {{--<a href="{{ route('account-reset-get') }}" class="btn btn-secondary w-100 fw-bold mt-2">Retrouver mon
+                    compte</a>
+               <button class="btn btn-secondary w-100 fw-bold mt-2" type="button" data-bs-toggle="modal" data-bs-target="#modalResetAccount">Retrouver mon compte</button> --}}
             </div>
 
         </div>

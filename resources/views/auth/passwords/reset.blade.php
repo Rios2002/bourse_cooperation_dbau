@@ -15,8 +15,8 @@
 
         <div class="row">
             <div class="col-12 text-start my-2">
-                <input id="email" type="email" class="form-control @error('email') is-invalid @enderror" name="email"
-                    value="{{ $email ?? old('email') }}" required autocomplete="email" autofocus readonly>
+                <input id="email" type="email" class="form-control @error('email') is-invalid @enderror"
+                    name="email" value="{{ $email ?? old('email') }}" required autocomplete="email" autofocus readonly>
 
                 @error('email')
                     <span class="invalid-feedback" role="alert">
@@ -27,10 +27,12 @@
 
             <div class="col-12 text-start my-2">
                 <label for="" class="text-dark text-bold">Nouveau Mot De Passe</label>
+                <div class="pass_show_hide">
+                    <input id="password" type="password" class="form-control @error('password') is-invalid @enderror"
+                        name="password" required autocomplete="new-password" {{-- pattern="^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#$%^&amp;*_=+-]).{8,12}$" --}} {{-- title="Doit contenir au moins une lettre majuscule, une lettre minuscule, un chiffre et un symbole ( ! @ # $ % ^ &amp; * _ = + - )" --}}
+                        minlength="8">
+                </div>
 
-                <input id="password" type="password" class="form-control @error('password') is-invalid @enderror"
-                    name="password" required autocomplete="new-password" {{-- pattern="^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#$%^&amp;*_=+-]).{8,12}$" --}} {{-- title="Doit contenir au moins une lettre majuscule, une lettre minuscule, un chiffre et un symbole ( ! @ # $ % ^ &amp; * _ = + - )" --}}
-                    minlength="8">
                 <small id="password" class="text-muted">
                     <i class="fa-solid fa-circle-info text-italic me-1"></i>
                     Définir un nouveau mot de passe spécifique à cette plateforme
@@ -43,9 +45,10 @@
             </div>
             <div class="col-12 text-start my-2">
                 <label for="" class="text-dark text-bold">Confirmer Mot De Passe</label>
-
-                <input id="password-confirm" type="password" class="form-control" name="password_confirmation" required
-                    autocomplete="new-password" {{-- pattern="^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#$%^&amp;*_=+-]).{8,12}$" --}} {{-- title="Doit contenir au moins une lettre majuscule, une lettre minuscule, un chiffre et un symbole ( ! @ # $ % ^ &amp; * _ = + - )" --}} minlength="8">
+                <div class="pass_show_hide">
+                    <input id="password-confirm" type="password" class="form-control" name="password_confirmation" required
+                        autocomplete="new-password" {{-- pattern="^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#$%^&amp;*_=+-]).{8,12}$" --}} {{-- title="Doit contenir au moins une lettre majuscule, une lettre minuscule, un chiffre et un symbole ( ! @ # $ % ^ &amp; * _ = + - )" --}} minlength="8">
+                </div>
                 <small id="password" class="text-muted">
                     <i class="fa-solid fa-circle-info text-italic me-1"></i>
                     Confirmer le mot de passe précédemment saisi

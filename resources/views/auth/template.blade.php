@@ -6,13 +6,11 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
 
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="keywords"
-        content="wrappixel, admin dashboard, html css dashboard, web dashboard, bootstrap 5 admin, bootstrap 5, css3 dashboard, bootstrap 5 dashboard, Flexy lite admin bootstrap 5 dashboard, frontend, responsive bootstrap 5 admin template, Flexy admin lite design, Flexy admin lite dashboard bootstrap 5 dashboard template">
-    <meta name="description"
-        content="Flexy Admin Lite is powerful and clean admin dashboard template, inpired from Bootstrap Framework">
-    <meta name="robots" content="noindex,nofollow">
+    <meta name="keywords" content="DBAU">
+    <meta name="description" content="DBAU">
+
     <title>DBAU</title>
-    <link rel="canonical" href="https://www.wrappixel.com/templates/Flexy-admin-lite/" />
+    <link rel="canonical" href="/" />
     <!-- Favicon icon -->
     <link rel="icon" type="image/png" sizes="16x16" href="{{ url('assets/images/favicon.png') }}">
     <!-- Custom CSS -->
@@ -26,6 +24,7 @@
     <!-- ============================================================== -->
     <!-- Preloader - style you can find in spinners.css -->
     <!-- ============================================================== -->
+    
     @yield('pre-content')
 
     <style>
@@ -72,8 +71,8 @@
                                 <div class="w-100 bg-danger h-10"></div>
                             </div>
                             <small>
-                                <strong >
-                                    Ministère de l’Enseignement  <br>Supérieur et &nbsp de la Recherche Scientifique
+                                <strong>
+                                    Ministère de l’Enseignement <br>Supérieur et &nbsp de la Recherche Scientifique
                                 </strong>
                             </small>
 
@@ -95,6 +94,10 @@
             </div>
         </header>
         <div class="">
+            <div class="container">
+
+                @include('layouts.partials.alert')
+            </div>
 
             <!-- ============================================================== -->
             <!-- End Bread crumb and right sidebar toggle -->
@@ -139,7 +142,7 @@
             <footer class="w-100" style="">
                 <hr>
                 <div class="text-center my-2">
-                    Système de Gestion des Allocations d'Etudes Universitaires ( SYGAL ) © COPYWRITE DBAU-DSI 2022
+                    Système de Gestion des Allocations d'Etudes Universitaires ( SYGAL ) © COPYRIGTH DBAU-DSI 2022
                 </div>
                 <div class="row  w-100 p-0 ml-1 d-flex">
                     <div class="col-4 h-10 bg-success">
@@ -237,8 +240,11 @@
 
     {{-- <link rel="stylesheet" href=""> --}}
 
-@include("auth.show-hide-password")
+    @include('script')
+    <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    @include('auth.show-hide-password')
     @yield('script')
+
 </body>
 
 </html>

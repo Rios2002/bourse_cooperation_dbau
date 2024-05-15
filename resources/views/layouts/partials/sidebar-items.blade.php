@@ -4,35 +4,15 @@
         <span class="hide-menu ps-1">Accueil</span>
     </a>
 </li>
-
 <li class="sidebar-item">
-    <a class="sidebar-link two-column indigo-hover-bg" href="{{ ('boutique') }}" aria-expanded="false">
-        <iconify-icon icon="solar:shop-broken" class="fs-6 aside-icon"></iconify-icon>
-        <span class="hide-menu ps-1">Boutique</span>
+    <a class="sidebar-link primary-hover-bg" href="{{ route('users.index') }}" aria-expanded="false">
+        <iconify-icon icon="icomoon-free:users" class="fs-6 aside-icon"></iconify-icon>
+        <span class="hide-menu ps-1">utilisateurs</span>
     </a>
 </li>
 
-<li class="sidebar-item">
-    <a class="sidebar-link two-column indigo-hover-bg" href="{{ ('panier') }}" aria-expanded="false">
-        <iconify-icon icon="solar:cart-4-bold-duotone" class="fs-6 aside-icon"></iconify-icon>
-        <span class="hide-menu ps-1">Mon Panier </span>
-        
-    </a>
-</li>
-<li class="sidebar-item">
-    <a class="sidebar-link two-column indigo-hover-bg" href="{{ ('mes-commandes') }}" aria-expanded="false">
-        <iconify-icon icon="line-md:account" class="fs-6 aside-icon"></iconify-icon>
-        <span class="hide-menu ps-1">Mes Commandes </span>
-    </a>
-</li>
 
-<li class="sidebar-item">
-    <a class="sidebar-link primary-hover-bg {{ Request::is('suivre-commande*') ? 'active' : '' }} "
-        href="{{ ('suivre-commande') }}" aria-expanded="false">
-        <iconify-icon icon="icon-park-twotone:search" class="fs-6 aside-icon"></iconify-icon>
-        <span class="hide-menu ps-1">Suivre ma commande</span>
-    </a>
-</li>
+
 @role('Super-admin')
     <li class="sidebar-item">
         <a class="sidebar-link two-column has-arrow indigo-hover-bg" aria-expanded="false">

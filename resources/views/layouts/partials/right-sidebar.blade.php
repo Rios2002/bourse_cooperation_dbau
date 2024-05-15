@@ -3,7 +3,7 @@
     <div>
         <!-- Sidebar navigation-->
         <nav id="sidebarnavh" class="sidebar-nav scroll-sidebar container-fluid">
-            <ul id="sidebarnav" class="d-flex justify-content-center">
+            <ul id="sidebarnav" class="">
                 <!-- ============================= -->
                 <!-- Home -->
                 <!-- ============================= -->

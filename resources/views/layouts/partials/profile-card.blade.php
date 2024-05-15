@@ -47,7 +47,7 @@
         </div>
 
         <div class="message-body">
-            <a href="{{ route('mon-profile') }}" class="dropdown-item px-7 d-flex align-items-center py-6">
+            <a href="{{ ('mon-profile') }}" class="dropdown-item px-7 d-flex align-items-center py-6">
                 <span class="btn px-3 py-2 bg-info-subtle rounded-1 text-info shadow-none">
                     <iconify-icon icon="solar:wallet-2-line-duotone" class="fs-7"></iconify-icon>
                 </span>
