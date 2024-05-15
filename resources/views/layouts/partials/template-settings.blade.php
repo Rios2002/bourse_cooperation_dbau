@@ -1,9 +1,4 @@
-<div class="" style="position: fixed; bottom: 10px; left: 20px;" title="Nous contacter sur whatsapp">
-    <button class="btn btn-success p-2 rounded-circle d-flex align-items-center justify-content-center " type="button">
-        <i class="icon ti ti-brand-whatsapp fs-8 m-1"></i>
-    </button>
-</div>
-<div class="hide">
+<div class="hide" style="display: none;">
     <button class="btn btn-primary p-3 rounded-circle d-flex align-items-center justify-content-center customizer-btn"
         type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasExample" aria-controls="offcanvasExample">
         <i class="icon ti ti-settings fs-7"></i>
