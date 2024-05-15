@@ -49,7 +49,7 @@
                                                         Actions
                                                     </button>
                                                     <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                                                        <a class="dropdown-item" href="{{ route('{{modelRoute}}.show',${{modelNameLowerCase}}->id) }}"><i class="fa fa-fw fa-eye"></i> {{ __('Voir') }}</a>
+                                                        <a class="dropdown-item" href="{{ route('{{modelRoute}}.show',${{modelNameLowerCase}}->id) }}"><i class="fa fa-fw fa-eye"></i> {{ __('Détails') }}</a>
                                                         <a class="dropdown-item" href="{{ route('{{modelRoute}}.edit',${{modelNameLowerCase}}->id) }}"><i class="fa fa-fw fa-edit"></i> {{ __('Modifier') }}</a>
                                                         <div class="dropdown-divider"></div>
                                                         <form action="{{ route('{{modelRoute}}.destroy',${{modelNameLowerCase}}->id) }}" method="POST">
@@ -67,7 +67,7 @@
                             </table>
                         </div>
                     </div>
-                </div> 
+                </div>
                 {!! ${{modelNamePluralLowerCase}}->withQueryString()->links() !!}
             </div>
         </div>
