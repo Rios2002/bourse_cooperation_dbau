@@ -30,6 +30,14 @@
                             <strong>Email:</strong>
                             {{ $user->email }}
                         </div>
+                        <div class="form-group">
+                            <strong>Password:</strong>
+                            {{ $user->password }}
+                        </div>
+                        <div class="form-group">
+                            <strong>Npi:</strong>
+                            {{ $user->NPI }}
+                        </div>
 
                     </div>
                 </div>

@@ -175,7 +175,7 @@
     @yield('script')
     @yield('script2')
     @yield('script3')
-    {{--  @include('script') --}}
+    @include('script')
 
 
 </body>

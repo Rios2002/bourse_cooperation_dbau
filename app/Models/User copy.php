@@ -20,6 +20,7 @@ use Illuminate\Foundation\Auth\User as Authenticatable;
  * @property $remember_token
  * @property $created_at
  * @property $updated_at
+ * @property $NPI
  *
  * @package App
  * @mixin \Illuminate\Database\Eloquent\Builder
@@ -38,6 +39,7 @@ class User extends Authenticatable
         'name',
         'email',
         'password',
+        'NPI'
     ];
 
     /**

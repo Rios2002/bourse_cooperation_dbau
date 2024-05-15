@@ -15,7 +15,7 @@
 
 
                     <div class="card-body">
-                      @if ($message = Session::get('success'))
+                        @if ($message = Session::get('success'))
                             <div class="alert alert-success">
                                 <p>{{ $message }}</p>
                             </div>
@@ -26,7 +26,7 @@
                         </div>
                         <div class="col mb-2">
                             <h5 class="card-title text-dark fw-bolder mb-0">User(s)</h5>
-                            <span>Liste des  User</span>
+                            <span>Liste des User</span>
                             <hr>
                         </div>
                         <div class="table-responsive">
@@ -34,9 +34,11 @@
                                 <thead class="thead">
                                     <tr>
                                         <th>No</th>
-                                        
-									<th >Name</th>
-									<th >Email</th>
+
+                                        <th>Name</th>
+                                        <th>Email</th>
+                                        {{-- <th>Password</th> --}}
+                                        <th>NPI</th>
 
                                         <th></th>
                                     </tr>
@@ -45,23 +47,34 @@
                                     @foreach ($users as $user)
                                         <tr>
                                             <td>{{ ++$i }}</td>
-                                            
-										<td >{{ $user->name }}</td>
-										<td >{{ $user->email }}</td>
+
+                                            <td>{{ $user->name }}</td>
+                                            <td>{{ $user->email }}</td>
+                                            {{-- <td>{{ $user->password }}</td> --}}
+                                            <td>{{ $user->NPI }}</td>
 
                                             <td>
                                                 <div class="dropdown">
-                                                    <button class="btn btn-primary dropdown-toggle btn-sm" type="button" id="dropdownMenuButton" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                                    <button class="btn btn-primary dropdown-toggle btn-sm" type="button"
+                                                        id="dropdownMenuButton" data-bs-toggle="dropdown"
+                                                        aria-haspopup="true" aria-expanded="false">
                                                         Actions
                                                     </button>
                                                     <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                                                        <a class="dropdown-item" href="{{ route('users.show',$user->id) }}"><i class="fa fa-fw fa-eye"></i> {{ __('Voir') }}</a>
-                                                        <a class="dropdown-item" href="{{ route('users.edit',$user->id) }}"><i class="fa fa-fw fa-edit"></i> {{ __('Modifier') }}</a>
+                                                        <a class="dropdown-item"
+                                                            href="{{ route('users.show', $user->id) }}"><i
+                                                                class="fa fa-fw fa-eye"></i> {{ __('Voir') }}</a>
+                                                        <a class="dropdown-item"
+                                                            href="{{ route('users.edit', $user->id) }}"><i
+                                                                class="fa fa-fw fa-edit"></i> {{ __('Modifier') }}</a>
                                                         <div class="dropdown-divider"></div>
-                                                        <form action="{{ route('users.destroy',$user->id) }}" method="POST">
+                                                        <form action="{{ route('users.destroy', $user->id) }}"
+                                                            method="POST">
                                                             @csrf
                                                             @method('DELETE')
-                                                            <button type="submit" class="dropdown-item text-danger"><i class="fa fa-fw fa-trash"></i> {{ __('Supprimer') }}</button>
+                                                            <button type="submit" class="dropdown-item text-danger"><i
+                                                                    class="fa fa-fw fa-trash"></i>
+                                                                {{ __('Supprimer') }}</button>
                                                         </form>
                                                     </div>
                                                 </div>
@@ -74,7 +87,7 @@
                         </div>
                     </div>
                 </div>
-                {!! $users->links() !!}
+                {!! $users->withQueryString()->links() !!}
             </div>
         </div>
     </div>

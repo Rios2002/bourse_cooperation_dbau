@@ -3,6 +3,6 @@
         {{form}}
     </div>
     <div class="box-footer mt-3">
-        <button type="submit" class="btn btn-success">Enregistrer</button>
+        <button type="submit" class="btn btn-success rounded-1">Enregistrer</button>
     </div>
 </div>

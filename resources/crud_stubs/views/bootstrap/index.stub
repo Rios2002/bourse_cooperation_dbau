@@ -67,8 +67,8 @@
                             </table>
                         </div>
                     </div>
-                </div>
-                {!! ${{modelNamePluralLowerCase}}->links() !!}
+                </div> 
+                {!! ${{modelNamePluralLowerCase}}->withQueryString()->links() !!}
             </div>
         </div>
     </div>

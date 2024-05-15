@@ -1,4 +1,3 @@
-
 {{-- <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.countdown/2.2.0/jquery.countdown.min.js"></script> --}}
 <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css">
@@ -173,7 +172,6 @@
 
 
     $(".card").addClass('border-radius-xl shadow');
-
 </script>
 
 <style>
@@ -183,18 +181,25 @@
 
     .rounded {
         border-radius: 15px;
-
     }
 
+    .rounded-05 {
+        border-radius: 0.25rem !important;
+        border-top-left-radius: !important;
+        border-top-right-radius: !important;
+        border-bottom-right-radius: !important;
+        border-bottom-left-radius: !important;
+    }
 </style>
 <style>
-    .dtr-details li{
+    .dtr-details li {
         display: flex;
         justify-content: space-between;
         align-items: center;
         align-content: center
     }
-    .dtr-data{
+
+    .dtr-data {
         text-align: right
     }
 </style>
