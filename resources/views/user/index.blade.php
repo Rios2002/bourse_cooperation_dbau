@@ -63,7 +63,7 @@
                                                     <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
                                                         <a class="dropdown-item"
                                                             href="{{ route('users.show', $user->id) }}"><i
-                                                                class="fa fa-fw fa-eye"></i> {{ __('Voir') }}</a>
+                                                                class="fa fa-fw fa-eye"></i> {{ __('Détails') }}</a>
                                                         <a class="dropdown-item"
                                                             href="{{ route('users.edit', $user->id) }}"><i
                                                                 class="fa fa-fw fa-edit"></i> {{ __('Modifier') }}</a>

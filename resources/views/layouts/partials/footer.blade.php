@@ -4,12 +4,9 @@
           <div class="pb-4 mb-4 border-bottom border-warning">
               <div class="row g-4">
                   <div class="col-lg-3">
-                      <h1 class="text-warning ">Orné's Taste
+                      <h1 class="text-warning ">DBAU
                       </h1>
-                      <p class="mb-4 text-white">Des saveurs authentiques, une commande simple, et une livraison rapide
-                          pour
-                          que
-                          chaque bouchée soit une expérience mémorable.</p>
+                      <p class="mb-4 text-white">Direction des Bourses et Aides Universitaires</p>
                   </div>
                   <div class="col-lg-2">
                       <a href="#">
@@ -21,7 +18,7 @@
                   <div class="col-lg-3">
                       <img src="{{ asset('spike/armur-logo-text-white.png') }}" alt="" class="img-fluid">
 
-                      <div class="">
+                      {{-- <div class="">
 
                           <div class="d-flex justify-content-end pt-3">
 
@@ -30,7 +27,7 @@
                                       class="fab fa-facebook-f"></i></a>
 
                           </div>
-                      </div>
+                      </div> --}}
 
                   </div>
               </div>

@@ -6,7 +6,7 @@
 @extends('layouts.app')
 
 @section('template_title')
-    Détails  User
+    Détails User
 @endsection
 
 @section('content')
@@ -17,27 +17,27 @@
 
 
                     <div class="card-body">
-                     <div class="text-end">
+                        <div class="text-end">
                             <a href="{{ route('users.index') }}" class="btn btn-sm btn-primary"> Retour</a>
                         </div>
+                        <div class="row">
+                            <div class="col-lg-4">
+                                <strong class="text-dark ">Name:</strong>
+                                <input type="text" class="form-control rounded-05 my-1 text-dark"
+                                    value="{{ $user->name }}" readonly>
+                            </div>
+                            <div class="col-lg-4">
+                                <strong class="text-dark ">Email:</strong>
+                                <input type="text" class="form-control rounded-05 my-1 text-dark"
+                                    value="{{ $user->email }}" readonly>
+                            </div>
+                            <div class="col-lg-4">
+                                <strong class="text-dark ">NPI:</strong>
+                                <input type="text" class="form-control rounded-05 my-1 text-dark"
+                                    value="{{ $user->NPI }}" readonly>
+                            </div>
+                        </div>
 
-                        
-                        <div class="form-group">
-                            <strong>Name:</strong>
-                            {{ $user->name }}
-                        </div>
-                        <div class="form-group">
-                            <strong>Email:</strong>
-                            {{ $user->email }}
-                        </div>
-                        <div class="form-group">
-                            <strong>Password:</strong>
-                            {{ $user->password }}
-                        </div>
-                        <div class="form-group">
-                            <strong>Npi:</strong>
-                            {{ $user->NPI }}
-                        </div>
 
                     </div>
                 </div>

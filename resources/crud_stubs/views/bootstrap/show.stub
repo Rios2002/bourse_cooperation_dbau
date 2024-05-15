@@ -17,11 +17,13 @@
 
 
                     <div class="card-body">
-                     <div class="text-end">
+                        <div class="text-end">
                             <a href="{{ route('{{modelRoute}}.index') }}" class="btn btn-sm btn-primary"> Retour</a>
                         </div>
+                        <div class="row">
 
-                        {{viewRows}}
+                            {{viewRows}}
+                        </div>
                     </div>
                 </div>
             </div>
