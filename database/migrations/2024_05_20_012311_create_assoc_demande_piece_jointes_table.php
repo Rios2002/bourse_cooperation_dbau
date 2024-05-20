@@ -20,7 +20,6 @@ return new class extends Migration
             $table->foreignIdFor(PieceJointe::class, 'piece_jointe_id')->constrained("piece_jointes")->cascadeOnUpdate()->cascadeOnDelete();
             $table->string('url');
             $table->timestamps();
-            $table->unique(['demande_id', 'piece_jointe_id']);
         });
     }
 
