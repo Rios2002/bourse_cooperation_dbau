@@ -2,12 +2,13 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Bourse;
 use App\Models\Demande;
-use Illuminate\Http\RedirectResponse;
+use Illuminate\View\View;
 use Illuminate\Http\Request;
 use App\Http\Requests\DemandeRequest;
+use Illuminate\Http\RedirectResponse;
 use Illuminate\Support\Facades\Redirect;
-use Illuminate\View\View;
 
 class DemandeController extends Controller
 {
@@ -16,9 +17,22 @@ class DemandeController extends Controller
      */
     public function index(Request $request): View
     {
-        $demandes = Demande::paginate();
+        $bourse_id = $request->get('bourse_id');
+        $search = $request->get('search');
+        if ($search) {
+            $demandes = Demande::where('Code', "LIKE", "%$search%")
+                ->orWhere('Nom', "LIKE", "%$search%")
+                ->orWhere('Prenom', "LIKE", "%$search%")
+                ->orWhere('NPI', "LIKE", "%$search%")
+                ->paginate(100);
+        } else {
+            $demandes = Demande::where("bourse_id", $bourse_id)->paginate(100);
+        }
 
-        return view('demande.index', compact('demandes'))
+        $bourses = Bourse::all();
+
+
+        return view('demande.index', compact('demandes', 'bourses'))
             ->with('i', ($request->input('page', 1) - 1) * $demandes->perPage());
     }
 
@@ -69,7 +83,7 @@ class DemandeController extends Controller
      */
     public function update(DemandeRequest $request, Demande $demande): RedirectResponse
     {
-        $all=$request->validated();
+        $all = $request->validated();
         $demande->update($all);
 
         return Redirect::route('demandes.index')
@@ -90,5 +104,11 @@ class DemandeController extends Controller
 
         return Redirect::route('demandes.index')
             ->with('success', 'Demande a été supprimé(e) avec succes !');
+    }
+    function validerDepot(Demande $demande)
+    {
+        $demande->update(['DepotPhysique' => true]);
+        return redirect()->back()
+            ->with('success', 'Demande a été validé(e) avec succes !');
     }
 }

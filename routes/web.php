@@ -75,6 +75,12 @@ Route::middleware(['auth'])->group(function () {
     Route::get('bourse-postuler/{bourse}/{demande_id}/{pj_id}/delete', [HomeController::class, 'deleteFile'])->name('bourses-postuler-deleteFile');
 });
 
+Route::middleware(['permission:gerer traitement des bourses'])->group(function () {
+    Route::resource('demandes', DemandeController::class, ["only" => ["index", "show", 'update', "destroy"]]);
+    Route::get('demandes/{demande}/valider-depot', [DemandeController::class, 'validerDepot'])->name('demandes.valider-depot');
+});
+
+
 Route::get('bourse-en-cours', [HomeController::class, 'bourse_disponible'])->name('bourses-disponible');
 Route::get('bourse-postuler/{bourse}', [HomeController::class, 'postuler'])->name('bourses-postuler');
 

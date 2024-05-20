@@ -130,3 +130,28 @@
         </ul>
     </li>
 @endhaspermission
+@haspermission('gerer traitement des bourses')
+    <li class="sidebar-item">
+        <a class="sidebar-link has-arrow success-hover-bg" href="javascript:void(0)" aria-expanded="false">
+            <iconify-icon icon="solar:layers-line-duotone" class="fs-6 aside-icon"></iconify-icon>
+            <span class="hide-menu ps-1">Traitement des bourses</span>
+        </a>
+        <ul aria-expanded="false" class="collapse first-level">
+
+            <li class="sidebar-item">
+                <a class="sidebar-link primary-hover-bg" href="{{ route('demandes.index') }}" aria-expanded="false">
+                    <iconify-icon icon="solar:layers-line-duotone" class="fs-6 aside-icon"></iconify-icon>
+                    <span class="hide-menu ps-1">Demandes</span>
+                </a>
+            </li>
+
+            {{-- <li class="sidebar-item">
+                <a class="sidebar-link primary-hover-bg" href="{{ route('bourses-accordees.index') }}" aria-expanded="false">
+                    <iconify-icon icon="fluent:document-unknown" class="fs-6 aside-icon"></iconify-icon>
+                    <span class="hide-menu ps-1">Bourses accordées</span>
+                </a>
+            </li> --}}
+
+        </ul>
+    </li>
+@endhaspermission

@@ -7,4 +7,5 @@ return [
     'gerer parametre des bourses',
     'gerer pieces jointes',
     'gerer bourses',
+    'gerer traitement des bourses',
 ];

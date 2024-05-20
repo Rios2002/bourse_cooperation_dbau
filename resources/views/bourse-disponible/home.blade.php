@@ -8,8 +8,9 @@
 
 @section('content')
     <div class="row">
-        @foreach ($bourses as $brs)
-            <div class="col-lg-4 col-sm-6">
+        @forelse ($bourses as $brs)
+            {{-- col-lg-4 col-sm-6 --}}
+            <div class="col-md-6 col-lg-4">
                 <div class="card">
                     <div class="card-body">
                         <div class="text-center">
@@ -49,6 +50,16 @@
 
                 </div>
             </div>
-        @endforeach
+        @empty
+            <div class="card">
+                <div class="card-body text-center">
+                    <img src="{{ asset('asset_perso/empty_box.png') }}" height="200" class="mb-4">
+                    <h5>Aucune bourse disponible pour le moment</h5>
+                    <p>
+                        Veuillez revenir ultérieurement
+                    </p>
+                </div>
+            </div>
+        @endforelse
     </div>
 @endsection
