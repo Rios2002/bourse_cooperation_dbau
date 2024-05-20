@@ -19,6 +19,7 @@ use Illuminate\Database\Eloquent\Relations\BelongsTo;
  * @property $DateOuverture
  * @property $DateFermeture
  * @property $Quota
+ * @property $isPublished
  * @property $created_at
  * @property $updated_at
  *
@@ -40,6 +41,7 @@ class Bourse extends Model
     protected $fillable = [
         'CodePays',
         'CodeAnneeAcademique',
+        "isPublished",
         'LibelleBourse', 'Description', 'Communique', 'isDisponible', 'DateOuverture', 'DateFermeture', 'Quota'
     ];
 
@@ -107,8 +109,16 @@ class Bourse extends Model
     }
     static function disponibles()
     {
-        return  self::where("isDisponible", true)
+        return  self::where("isDisponible", true)->where("isPublished", true)
             ->whereBetween(DB::raw("CURRENT_TIMESTAMP"), [DB::raw("DateOuverture"), DB::raw("DateFermeture")]);
+    }
+    function estActif()
+    {
+        return ($this->disponibles()->where('id', $this->id)->exists());
+    }
+    function canBePublished()
+    {
+        return ($this->DateFermeture >= now() && $this->diplomeDeBase()->count() != 0 && $this->assocBourseFilieres()->count() != 0 && $this->assocBoursePieceJointes()->count() != 0);
     }
     function demandes()
     {

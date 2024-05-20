@@ -23,6 +23,7 @@ return new class extends Migration
             $table->dateTime('DateOuverture');
             $table->dateTime('DateFermeture');
             $table->integer('Quota');
+            $table->boolean('isPublished')->default(false);
             $table->timestamps();
         });
     }

@@ -49,10 +49,10 @@
                                         <tr>
                                             <td>{{ ++$i }}</td>
 
-                                           <td>{{ $bourse->pays()->first()->LibellePays }}</td>
+                                            <td>{{ $bourse->pays()->first()->LibellePays }}</td>
                                             <td>{{ $bourse->CodeAnneeAcademique }}</td>
                                             <td>{{ Str::limit($bourse->LibelleBourse, 30) }}
-                                                @if ($bourse->isDisponible)
+                                                @if ($bourse->estActif())
                                                     <span
                                                         class=" badge rounded-pill text-bg-success text-white ms-2">Actif</span>
                                                 @endif
@@ -78,6 +78,16 @@
                                                         <a class="dropdown-item" href="{{ asset($bourse->Communique) }}"
                                                             target="_blank"><i class="fa fa-fw fa-eye"></i>
                                                             {{ __('Voir Communiqué') }}</a>
+                                                        <a class="dropdown-item"
+                                                            href="{{ route('bourses.toggle_publish', $bourse->id) }}"><i
+                                                                class="fa fa-fw fa-eye"></i>
+                                                            @if ($bourse->estActif())
+                                                                Dépublier
+                                                            @else
+                                                                Publier
+                                                            @endif
+                                                            la bourse
+                                                        </a>
                                                         <a class="dropdown-item"
                                                             href="{{ route('bourses.edit', $bourse->id) }}"><i
                                                                 class="fa fa-fw fa-edit"></i> {{ __('Modifier') }}</a>

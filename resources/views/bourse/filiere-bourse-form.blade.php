@@ -1,5 +1,9 @@
 <div class="col-12">
     <h5> Filière de la bourse : {{ $bourse->LibelleBourse }} </h5>
+    <small>
+        <i class="fa fa-info-circle me-2"></i>
+        Gérer dans cette section les filières de la bourse
+    </small>
 </div>
 <div class="col-lg-12">
     <div class="text-end">
@@ -23,9 +27,6 @@
                             class="form-select select2 @if ($errors->has('filiere')) is-invalid @endif rounded-05">
                             <option value="">-- Selectionner --</option>
                             @foreach ($filiers as $key => $value)
-                                @if (in_array($key, $bourseFiliereArray))
-                                    @continue
-                                @endif
                                 <option value="{{ $key }}">{{ $value }}</option>
                             @endforeach
                         </select>
@@ -53,7 +54,7 @@
 
                 </div>
                 <div class="col-lg-2  align-items-center ">
-                    <button type="submit" class="btn btn-success rounded-05">Enregistrer</button>
+                    <button type="submit" class="btn btn-success rounded-05 mt-2">Enregistrer</button>
                 </div>
             </div>
         </form>

@@ -1,5 +1,9 @@
 <div class="col-lg-12">
     <h5> Diplômes de base de la bourse {{ $bourse->LibelleBourse }} : </h5>
+    <small>
+        <i class="fa fa-info-circle me-2"></i>
+        Gérer dans cette section les diplômes de base de la bourse
+    </small>
 </div>
 <div class="col-12">
     <div class="text-end">

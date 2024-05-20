@@ -27,7 +27,7 @@
                 <strong class="text-danger"> * </strong> </strong>
             <input type="date" name="DateNaissance"
                 class="form-control @error('DateNaissance') is-invalid @enderror rounded-05"
-                value="{{ old('DateNaissance', $demande?->DateNaissance->format('Y-m-d')) }}" id="date_naissance"
+                value="{{ old('DateNaissance', $demande?->DateNaissance?->format('Y-m-d')) }}" id="date_naissance"
                 required autocomplete="birthdate">
             {!! $errors->first(
                 'DateNaissance',

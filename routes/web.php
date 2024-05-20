@@ -59,6 +59,8 @@ Route::middleware(['permission:gerer bourses'])->group(function () {
     Route::post('bourses/{bourse}/diplomes', [BourseController::class, 'storeDiplomes'])->name('bourses.storeDiplomes');
     Route::post('bourses/{bourse}/add-pj', [BourseController::class, 'addPj'])->name('bourses.addPj');
     Route::delete('bourses/{bourse}/deletePj', [BourseController::class, 'deletePj'])->name('bourses.deletePj');
+    Route::get('bourses/{bourse}/toggle-publish', [BourseController::class, 'toggle_publish'])->name('bourses.toggle_publish');
+
 
     Route::post('bourses/{bourse}/storeFiliere', [BourseController::class, 'storeFiliere'])->name('bourses.storeFiliere');
     Route::delete('bourses/{bourse}/deleteFiliere', [BourseController::class, 'deleteFiliere'])->name('bourses.deleteFiliere');

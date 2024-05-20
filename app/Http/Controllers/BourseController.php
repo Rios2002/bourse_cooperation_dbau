@@ -239,4 +239,28 @@ class BourseController extends Controller
         return Redirect::route('bourses.show', $bourse->id)
             ->with('success', 'Diplome supprimée avec succes !');
     }
+    function toggle_publish(Bourse $bourse)
+    {
+        if ($bourse->isPublished) {
+            $bourse->update(['isPublished' => false]);
+        } else {
+            if ($bourse->diplomeDeBase()->count() == 0) {
+                return Redirect::route('bourses.show', $bourse->id)
+                    ->withErrors('Veuillez ajouter au moins un diplome de base à cette bourse !');
+            }
+            if ($bourse->assocBourseFilieres()->count() == 0) {
+                return Redirect::route('bourses.show', $bourse->id)
+                    ->withErrors('Veuillez ajouter au moins une filiere à cette bourse !');
+            }
+            if ($bourse->assocBoursePieceJointes()->count() == 0) {
+                return Redirect::route('bourses.show', $bourse->id)
+                    ->withErrors('Veuillez ajouter au moins une piece jointe à cette bourse !');
+            }
+
+            $bourse->update(['isPublished' => true]);
+        }
+
+        return Redirect::route('bourses.show', $bourse->id)
+            ->with('success', 'Publication de la bourse ' . $bourse->LibelleBourse . ' a été mis à jour avec succes !');
+    }
 }

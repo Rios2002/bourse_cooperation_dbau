@@ -55,6 +55,11 @@ class HomeController extends Controller
     function processPostuler(Bourse $bourse, Request $request)
     {
         $demande = null;
+        if (!$bourse->estActif()) {
+            return Redirect::route('bourses-disponible')
+                ->withErrors("Cette bourse n'est pas disponible pour le moment");
+        }
+
         $olddmd = Demande::where("user_id", auth()->id())->where("bourse_id", $bourse->id)->first();
         if ($request->has('start')  && !is_null($olddmd) && $olddmd->currentStep() == 1) {
             return Redirect::route('bourses-postuler-process', [$bourse->id, "reference" => $olddmd->Code])
@@ -97,6 +102,10 @@ class HomeController extends Controller
 
     function processPostulerPost(Bourse $bourse, $demande_id, $step, Request $request)
     {
+        if (!$bourse->estActif()) {
+            return Redirect::route('bourses-disponible')
+                ->withErrors("Cette bourse n'est pas disponible pour le moment");
+        }
         $rules = Demande::$static_steps[$step]["rules"];
         $all = $request->all();
         $request->validate($rules);
@@ -172,6 +181,11 @@ class HomeController extends Controller
             return Redirect::route('bourses-disponible')
                 ->withErrors("Une erreur s'est produite, veuillez réessayer");
         }
+        if ($demande->Imprime) {
+            return Redirect::route('bourses-postuler-process', [$bourse->id, "reference" => $demande->Code])
+                ->withErrors("Vous ne pouvez plus modifier votre demande, elle a déjà été imprimée");
+        }
+
         $assoc = AssocDemandePieceJointe::where("demande_id", $demande->id)->where("piece_jointe_id", $pj_id)->first();
         if (!is_null($assoc)) {
             Storage::delete($assoc->url);

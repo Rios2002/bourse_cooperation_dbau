@@ -1,6 +1,10 @@
 <div class="col-12">
 
     <h5> Pièce Jointe de la bourse {{ $bourse->LibelleBourse }}: </h5>
+    <small>
+        <i class="fa fa-info-circle me-2"></i>
+        Gérer dans cette section les Pièce Jointe de base de la bourse par diplôme de base
+    </small>
 </div>
 <div class="col-lg-12">
     <div class="text-end">

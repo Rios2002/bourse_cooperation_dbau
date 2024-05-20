@@ -20,7 +20,27 @@
                         </div>
                         <div class="row align-items-center ">
 
-
+                            <div class="col-12 mt-3">
+                                @if ($bourse->estActif())
+                                    <div class="alert alert-success ">
+                                        <i class="fa fa-check-circle me-2"></i> Cette Bourse est Active Actuellement,
+                                        l'inscription à cette bourse est disponible
+                                        <br>
+                                        <a href="{{ route('bourses.toggle_publish', $bourse->id) }}"
+                                            class="btn btn-dark rounded-05 mt-3 btn-sm py-2 px-3">Dépublier</a>
+                                    </div>
+                                @else
+                                    <div class="alert alert-danger ">
+                                        <i class="fa fa-times-circle me-2"></i> Cette Bourse est Inactive Actuellement,
+                                        l'inscription à cette bourse n'est pas disponible
+                                        @if ($bourse->canBePublished())
+                                            <br>
+                                            <a href="{{ route('bourses.toggle_publish', $bourse->id) }}"
+                                                class="btn btn-dark rounded-05 mt-3 btn-sm py-2 px-3">Publier</a>
+                                        @endif
+                                    </div>
+                                @endif
+                            </div>
                             <div class="col-lg-6">
                                 <div class="d-flex align-items-center ">
 
@@ -42,12 +62,7 @@
 
                             </div>
                             <div class="col-lg-6 text-end">
-                                <div class="d-flex align-items-center justify-content-end">
 
-                                    <strong class="text-dark align-items-center">Année Académique : </strong>
-                                    <span class="ms-2 fs-6 text-primary fw-bold ">
-                                        {{ $bourse->CodeAnneeAcademique }} </span>
-                                </div>
 
                             </div>
 
@@ -65,7 +80,16 @@
 
                             <div class="col-lg-12">
                                 <strong class="text-dark ">Description:</strong>
-                                <textarea name="" id="" rows="2" readonly class="form-control rounded-05 my-1 text-dark">{{ $bourse->Description }}</textarea>
+                                <input type="text" class="form-control rounded-05 my-1 text-dark"
+                                    value="{{ $bourse->Description }}" readonly>
+
+
+                            </div>
+                            <div class="col-lg-4">
+                                <strong class="text-dark ">Année académique:</strong>
+                                <input type="text" class="form-control rounded-05 my-1 text-dark"
+                                    value="{{ $bourse->CodeAnneeAcademique }}" readonly>
+
 
                             </div>
 
@@ -73,16 +97,12 @@
 
 
                             <div class="col-lg-4">
-                                <strong class="text-dark ">Dateouverture:</strong>
+                                <strong class="text-dark ">Période :</strong>
                                 <input type="text" class="form-control rounded-05 my-1 text-dark"
-                                    value="{{ $bourse->DateOuverture }}" readonly>
+                                    value="{{ $bourse->periode() }}" readonly>
                             </div>
 
-                            <div class="col-lg-4">
-                                <strong class="text-dark ">Datefermeture:</strong>
-                                <input type="text" class="form-control rounded-05 my-1 text-dark"
-                                    value="{{ $bourse->DateFermeture }}" readonly>
-                            </div>
+
 
                             <div class="col-lg-4">
                                 <strong class="text-dark ">Quota:</strong>
