@@ -73,7 +73,7 @@
                 </div>
             </div>
         @else
-            <a href="{{ route('login') }}" class="btn btn-warning rounded-1 w-100 ">S'authentifier</a>
+            @include('layouts.partials.header-partials.invite-login')
         @endif
 
     </div>

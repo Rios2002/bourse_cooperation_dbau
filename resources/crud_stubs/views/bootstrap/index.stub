@@ -26,14 +26,14 @@
                         </div>
                         <div class="col mb-2">
                             <h5 class="card-title text-dark fw-bolder mb-0">{{modelTitle}}(s)</h5>
-                            <span>Liste des  {{modelTitle}}</span>
+                            <span>Liste des {{modelTitle}}(s)</span>
                             <hr>
                         </div>
                         <div class="table-responsive">
                             <table class="table table-striped table-hover datatable">
                                 <thead class="thead">
                                     <tr>
-                                        <th>No</th>
+                                        <th>N°</th>
                                         {{tableHeader}}
                                         <th></th>
                                     </tr>

@@ -10,6 +10,19 @@
         </div>
         <div class="row">
             <div class="col-12 text-start my-2">
+                <label for="" class="text-dark text-bold">Nom et Prénoms</label>
+
+                <input id="name" type="text" maxlength="255"
+                    class="form-control @error('name') is-invalid @enderror" name="name" value="{{ old('name') }}"
+                    required autocomplete="name">
+
+                @error('name')
+                    <span class="invalid-feedback" role="alert">
+                        <strong>{{ $message }}</strong>
+                    </span>
+                @enderror
+            </div>
+            <div class="col-12 text-start my-2">
                 <label for="" class="text-dark text-bold">Email</label>
 
                 <input id="email" type="email" class="form-control @error('email') is-invalid @enderror"

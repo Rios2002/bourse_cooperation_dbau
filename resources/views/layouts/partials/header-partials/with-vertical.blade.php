@@ -63,7 +63,7 @@
                         @if (auth()->user())
                             @include('layouts.partials.profile-card')
                         @else
-                            <a href="{{ ('login') }}" class="btn btn-warning rounded-1 w-100 ">S'authentifier</a>
+                            @include('layouts.partials.header-partials.invite-login')
                         @endif
                     </li>
                     <!-- ------------------------------- -->

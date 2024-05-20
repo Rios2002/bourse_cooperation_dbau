@@ -19,12 +19,12 @@
                 <ul class="navbar-nav flex-row ms-auto align-items-center justify-content-center">
 
                     <li class="nav-item">
-                        <a class="nav-link nav-icon-hover moon dark-layout" href="{{ ('theme-toggle') }}"
+                        <a class="nav-link nav-icon-hover moon dark-layout" href="{{ 'theme-toggle' }}"
                             style="display: flex;">
                             <iconify-icon icon="solar:moon-line-duotone" class="moon fs-7"
                                 style="display: flex;"></iconify-icon>
                         </a>
-                        <a class="nav-link nav-icon-hover sun light-layout" href="{{ ('theme-toggle') }}"
+                        <a class="nav-link nav-icon-hover sun light-layout" href="{{ 'theme-toggle' }}"
                             style="display: none;">
                             <iconify-icon icon="solar:sun-2-line-duotone" class="sun fs-7"
                                 style="display: none;"></iconify-icon>
@@ -42,7 +42,7 @@
                         @if (auth()->user())
                             @include('layouts.partials.profile-card')
                         @else
-                            <a href="{{ ('login') }}" class="btn btn-warning rounded-1 w-100 ">S'authentifier</a>
+                            @include('layouts.partials.header-partials.invite-login')
                         @endif
                     </li>
                     <!-- ------------------------------- -->
