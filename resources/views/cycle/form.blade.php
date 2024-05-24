@@ -2,14 +2,14 @@
     <div class="row">
 
         <div class="form-group mb-2 mb20">
-            <strong> <label for="code_cycle" class="form-label">{{ __('Codecycle') }}</label>
+            <strong> <label for="code_cycle" class="form-label">{{ __('Code') }}</label>
                 <!-- <strong class="text-danger"> * </strong> --> </strong>
             <input type="text" name="CodeCycle" class="form-control @error('CodeCycle') is-invalid @enderror rounded-05"
                 value="{{ old('CodeCycle', $cycle?->CodeCycle) }}" id="code_cycle">
             {!! $errors->first('CodeCycle', '<div class="invalid-feedback" role="alert"><strong>:message</strong></div>') !!}
         </div>
         <div class="form-group mb-2 mb20">
-            <strong> <label for="libelle_cycle" class="form-label">{{ __('Libellecycle') }}</label>
+            <strong> <label for="libelle_cycle" class="form-label">{{ __('Libellé') }}</label>
                 <!-- <strong class="text-danger"> * </strong> --> </strong>
             <input type="text" name="LibelleCycle"
                 class="form-control @error('LibelleCycle') is-invalid @enderror rounded-05"

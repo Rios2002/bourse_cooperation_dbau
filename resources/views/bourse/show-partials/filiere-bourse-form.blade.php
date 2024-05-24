@@ -1,9 +1,11 @@
 <div class="col-12">
+
     <h5> Filière de la bourse : {{ $bourse->LibelleBourse }} </h5>
     <small>
         <i class="fa fa-info-circle me-2"></i>
         Gérer dans cette section les filières de la bourse
     </small>
+
 </div>
 <div class="col-lg-12">
     <div class="text-end">
@@ -59,6 +61,7 @@
             </div>
         </form>
     </div>
+
 
     <div class="table-responsive">
         <table class="table w-10 table-striped ">

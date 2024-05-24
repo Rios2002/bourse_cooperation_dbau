@@ -177,6 +177,17 @@ class Demande extends Model
             $step++;
         }
 
+        $forms = $this->Bourse()->first()->formulaires();
+        foreach ($forms as $form) {
+            if ($form->stepCompleted($this->id)) {
+                $step++;
+            } else {
+                continue;
+            }
+        }
+
+
+
         return $step;
     }
     static function generateCode()
@@ -215,6 +226,10 @@ class Demande extends Model
             $this->Bourse()->first()->assocBoursePieceJointes()->where('CodeDiplome', $this->CodeDiplome)->pluck('piece_jointe_id')
         );
     }
+    function getPiecesJointesValue()
+    {
+        return AssocDemandePieceJointe::where('demande_id', $this->id)->join('piece_jointes', 'assoc_demande_piece_jointes.piece_jointe_id', 'piece_jointes.id')->pluck('Libelle', 'url');
+    }
 
     function getPieceJointe($pj_id)
     {
@@ -227,5 +242,14 @@ class Demande extends Model
     function isCompleted()
     {
         return $this->currentStep() > $this->Bourse()->first()->getStepCount();
+    }
+    function getChampsComplementaire()
+    {
+        return AssocChampDemande::where("demande_id", $this->id)->join("champ_formulaires", 'assoc_champ_demandes.champ_formulaire_id', "champ_formulaires.id")->pluck("Saisi", "LibelleChamp");
+    }
+
+    function userStr()
+    {
+        return $this->user()->first()->name . ' ( ' . $this->user()->first()->email . ' , id : ' . $this->user_id . ' )';
     }
 }

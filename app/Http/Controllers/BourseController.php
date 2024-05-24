@@ -3,21 +3,23 @@
 namespace App\Http\Controllers;
 
 use App\Models\Pay;
-use App\Models\Bourse;
-use Illuminate\View\View;
-use Illuminate\Http\Request;
-use App\Models\AnneeAcademique;
-use App\Http\Requests\BourseRequest;
-use App\Models\AssocBourseDiplomeDisponible;
-use App\Models\AssocBourseFiliere;
-use App\Models\AssocBoursePieceJointe;
 use App\Models\Cycle;
-use App\Models\DiplomeDeBase;
+use App\Models\Bourse;
 use App\Models\Filiere;
+use Illuminate\View\View;
+use App\Models\Formulaire;
 use App\Models\PieceJointe;
+use Illuminate\Http\Request;
+use App\Models\DiplomeDeBase;
+use App\Models\AnneeAcademique;
+use App\Models\AssocBourseFiliere;
+use App\Http\Requests\BourseRequest;
+use App\Models\AssocBoursFormulaire;
 use Illuminate\Http\RedirectResponse;
+use App\Models\AssocBoursePieceJointe;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\Redirect;
+use App\Models\AssocBourseDiplomeDisponible;
 
 class BourseController extends Controller
 {
@@ -39,7 +41,7 @@ class BourseController extends Controller
     {
         $bourse = new Bourse();
         $pays = Pay::pluck('LibellePays', 'CodePays');
-        $anneeAcademiques = AnneeAcademique::pluck('LibelleAnneeAcademique', 'CodeAnneeAcademique');
+        $anneeAcademiques = AnneeAcademique::orderBy("AnneeDebut", "DESC")->pluck('LibelleAnneeAcademique', 'CodeAnneeAcademique');
 
         return view('bourse.create', compact('bourse', 'pays', 'anneeAcademiques'));
     }
@@ -69,6 +71,7 @@ class BourseController extends Controller
         $pieceJointes = PieceJointe::pluck("Libelle", "id");
         $cycles = $bourse->cyclePossible()->pluck("LibelleCycle", "CodeCycle");
         $filiers = Filiere::pluck("LibelleFiliere", "id");
+        $formulaires = Formulaire::pluck("Titre", "id");
 
 
 
@@ -77,9 +80,11 @@ class BourseController extends Controller
         $bourseDiplomesObj = $bourse->diplomeDeBase()->get();
 
         $bourseFiliers = $bourse->assocBourseFilieres()->get();
-        // dd($bourseDiplomes);
+        $bourseFormulaires = $bourse->formulaires();
+        $demandes = $bourse->demandes()->get();
 
-        return view('bourse.show', compact('bourse', 'diplomes', 'bourseDiplomes', 'pieceJointes', 'bourseDiplomesObj', 'boursePJ', 'cycles', 'filiers', 'bourseFiliers'));
+
+        return view('bourse.show', compact('bourse', 'diplomes', 'bourseDiplomes', 'pieceJointes', 'bourseDiplomesObj', 'boursePJ', 'cycles', 'filiers', 'bourseFiliers', 'formulaires', 'bourseFormulaires', 'demandes'));
     }
 
     /**
@@ -89,7 +94,7 @@ class BourseController extends Controller
     {
         $bourse = Bourse::findOrFail($id);
         $pays = Pay::pluck('LibellePays', 'CodePays');
-        $anneeAcademiques = AnneeAcademique::pluck('LibelleAnneeAcademique', 'CodeAnneeAcademique');
+        $anneeAcademiques = AnneeAcademique::orderBy("AnneeDebut", "DESC")->pluck('LibelleAnneeAcademique', 'CodeAnneeAcademique');
 
 
 
@@ -144,7 +149,7 @@ class BourseController extends Controller
             "saisirFiliere" => $saisi
         ]);
 
-        return Redirect::route('bourses.show', $bourse->id)
+        return Redirect::route('bourses.show', [$bourse->id, "#SectionDiplome"])
             ->with('success', 'Diplomes disponibles pour la bourse ' . $bourse->LibelleBourse . ' ont été mis à jour avec succes !');
     }
     function addPj()
@@ -164,7 +169,7 @@ class BourseController extends Controller
             "CodeDiplome" => request()->CodeDiplome
         ]);
 
-        return Redirect::route('bourses.show', $bourse->id)
+        return Redirect::route('bourses.show', [$bourse->id, "#SectionPieceJointe"])
             ->with('success', 'Piece jointe ajoutée avec succes !');
     }
     function deletePj()
@@ -208,7 +213,7 @@ class BourseController extends Controller
             ]
         );
 
-        return Redirect::route('bourses.show', $bourse->id)
+        return Redirect::route('bourses.show', [$bourse->id, "#SectionFiliere"])
             ->with('success', 'Filiere ajoutée avec succes !');
     }
     function deleteFiliere()
@@ -262,5 +267,41 @@ class BourseController extends Controller
 
         return Redirect::route('bourses.show', $bourse->id)
             ->with('success', 'Publication de la bourse ' . $bourse->LibelleBourse . ' a été mis à jour avec succes !');
+    }
+
+    function storeFormulaire()
+    {
+        request()->validate([
+            'formulaire_id' => 'required|exists:formulaires,id',
+        ]);
+        $bourse = Bourse::findOrFail(request()->bourse);
+
+        AssocBoursFormulaire::updateOrCreate(
+            [
+                "bourse_id" => $bourse->id,
+                "formulaire_id" => request()->formulaire_id
+            ],
+            [
+                "bourse_id" => $bourse->id,
+                "formulaire_id" => request()->formulaire_id
+            ]
+        );
+        // $bourse->formulaires()->syncWithoutDetaching([$formulaire]);
+
+        return Redirect::route('bourses.show', [$bourse->id, "#SectionFormulaire"])
+            ->with('success', 'Formulaire ajoutée avec succes !');
+    }
+    function deleteFormulaire($bourse_id)
+    {
+        request()->validate([
+            'formulaire_id' => 'required',
+        ]);
+        $bourse = Bourse::findOrFail($bourse_id);
+        $form = Formulaire::findOrFail(request()->formulaire_id);
+
+        AssocBoursFormulaire::where('bourse_id', $bourse->id)->where('formulaire_id', $form->id)->delete();
+
+        return Redirect::route('bourses.show', $bourse->id)
+            ->withErrors('Formulaire non associée à cette bourse !');
     }
 }

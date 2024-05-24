@@ -72,6 +72,31 @@
                             </li>
                         @endforeach
 
+                        @foreach ($forms as $formu)
+                            <li class="nav-item">
+                                <a class="nav-link d-flex @if ($formu->KeyStep == $currentStep) active @endif"
+                                    data-bs-toggle="tab" href="#paneStep{{ $formu->KeyStep }}" role="tab"
+                                    @if ($formu->KeyStep > $currentStep) disabled @endif>
+                                    <div class="d-flex align-items-center ">
+                                        <div class="me-2">
+                                            <div
+                                                class="btn
+                                        @if ($formu->KeyStep < $currentStep) btn-primary
+                                        @else
+                                            btn-secondary @endif
+                                        rounded-1 px-3 py-2 fw-bolder ">
+                                                {{ $formu->KeyStep }}
+                                            </div>
+                                        </div>
+                                        <div class="col">
+                                            <div class="fw-bold ">{{ $formu->Titre }} </div>
+                                            <div class="text-muted">{{ $formu->Description }}</div>
+                                        </div>
+                                    </div>
+                                </a>
+                            </li>
+                        @endforeach
+
 
                     </ul>
                     <!-- Tab panes -->
@@ -88,7 +113,16 @@
                                 </form>
                             </div>
                         @endforeach
+                        @foreach ($forms as $formu)
+                            <div class="tab-pane @if ($formu->KeyStep == $currentStep) active @endif"
+                                id="paneStep{{ $formu->KeyStep }}" role="tabpanel">
 
+                                @include('bourse-disponible.formulaire-statique.build-form', [
+                                    'formulaire' => $formu,
+                                ])
+                                </form>
+                            </div>
+                        @endforeach
                     </div>
                 </div>
 

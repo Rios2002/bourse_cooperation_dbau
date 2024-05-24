@@ -33,5 +33,10 @@ class DatabaseSeeder extends Seeder
         $this->call(PaysSeeder::class);
         $this->call(CycleSeeder::class);
         $this->call(DiplomeDeBaseSeeder::class);
+        $this->call(TypeFormulaireSeeder::class);
+        $this->call(TypeSortySeeder::class);
+        $this->call(TypeChampsSeeder::class);
+        $this->call(AttributTypeChampsSeeder::class);
+        $this->call(AnneeAcademiqueSeeder::class);
     }
 }

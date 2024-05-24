@@ -101,6 +101,21 @@
                     <span class="hide-menu ps-1">Diplôme de base</span>
                 </a>
             </li>
+            <li class="sidebar-item">
+                <a class="sidebar-link primary-hover-bg" href="{{ route('formulaires.index') }}" aria-expanded="false">
+                    <iconify-icon icon="fluent:form-28-regular" class="fs-6 aside-icon"></iconify-icon>
+                    <span class="hide-menu ps-1">Formulaire</span>
+                </a>
+            </li>
+            <li class="sidebar-item">
+                <a class="sidebar-link primary-hover-bg" href="{{ route('type-champs.index') }}" aria-expanded="false">
+                    <iconify-icon icon="fluent:form-28-regular" class="fs-6 aside-icon"></iconify-icon>
+                    <span class="hide-menu ps-1">Type de champs</span>
+                </a>
+            </li>
+
+
+
         </ul>
     </li>
 @endhaspermission

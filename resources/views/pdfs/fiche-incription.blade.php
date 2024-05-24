@@ -94,9 +94,6 @@
                 <strong>Lieu Naissance:</strong>
                 <div class='btn-style'>{{ $demande->LieuNaissance }}</div>
             </td>
-
-
-
         </tr>
         <tr>
             <td colspan="3">
@@ -119,8 +116,6 @@
                     {{ $demande->CycleSollicite . ' | ' . $demande->LibelleFiliere }}
                 </div>
             </td>
-
-
         </tr>
         <tr>
             <td> <strong>Status Bourse:</strong>
@@ -133,6 +128,17 @@
                 <div class='btn-style'>{{ $demande->ContactParent }}</div>
             </td>
         </tr>
+
+        @foreach ($demande->getChampsComplementaire() as $key => $value)
+            <tr>
+                <td colspan="6">
+
+                    <strong>{{ $key ?? '' }} :</strong>
+                    <div class='btn-style'>{{ $value ?? '' }}</div>
+
+                </td>
+            </tr>
+        @endforeach
         <tr>
             <td colspan="6">
 

@@ -14,6 +14,7 @@ use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\App;
 use App\Http\Requests\DemandeRequest;
 use App\Models\AssocDemandePieceJointe;
+use App\Models\Formulaire;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\Redirect;
 
@@ -86,7 +87,12 @@ class HomeController extends Controller
                 ->withErrors("Une erreur s'est produite, veuillez réessayer");
         }
 
+
+        $forms = $bourse->formulaires();
+
         $currentStep = $demande->currentStep();
+
+
         $StaticSteps = Demande::$static_steps;
 
         $diplomes = $bourse->diplomes()->get();
@@ -97,7 +103,7 @@ class HomeController extends Controller
 
         // if (in_array($currentStep, array_keys(Demande::$static_steps))) {
         // }
-        return view('bourse-disponible.formulaire-statique.index', compact('demande', 'bourse', 'StaticSteps', 'currentStep', 'diplomes', 'cycles', 'filieresBourses', 'piecesJointes'));
+        return view('bourse-disponible.formulaire-statique.index', compact('demande', 'bourse', 'StaticSteps', 'currentStep', 'diplomes', 'cycles', 'filieresBourses', 'piecesJointes', 'forms'));
     }
 
     function processPostulerPost(Bourse $bourse, $demande_id, $step, Request $request)
@@ -145,7 +151,40 @@ class HomeController extends Controller
 
         return Redirect::route('bourses-postuler-process', [$bourse->id, "reference" => $demande->Code]);
     }
+    function processPostFormCostum(Bourse $bourse, $demande_id, Request $request)
+    {
 
+        request()->validate([
+            "formulaire_id" => "required",
+        ]);
+        if (!$bourse->estActif()) {
+            return Redirect::route('bourses-disponible')
+                ->withErrors("Cette bourse n'est pas disponible pour le moment");
+        }
+
+        if (!$bourse->CheckFormExists($request->formulaire_id)) {
+            return redirect()->back()
+                ->withErrors("Ce formulaire n'est pas disponible pour cette bourse");
+        }
+        $demande = Demande::where("user_id", auth()->id())->where("bourse_id", $bourse->id)
+            ->where("id", $demande_id)->first();
+
+        if (is_null($demande)) {
+            return Redirect::route('bourses-disponible')
+                ->withErrors("Une erreur s'est produite, veuillez réessayer");
+        }
+        if ($demande->Imprime) {
+            return Redirect::route('bourses-postuler-process', [$bourse->id, "reference" => $demande->Code])
+                ->withErrors("Vous ne pouvez plus modifier votre demande, elle a déjà été imprimée");
+        }
+
+        $form = Formulaire::findOrFail($request->formulaire_id);
+        $rules = $form->rules();
+        $request->validate($rules);
+        $all = $request->all();
+        $form->storeData($all, $demande->id);
+        return Redirect::route('bourses-postuler-process', [$bourse->id, "reference" => $demande->Code]);
+    }
 
     function generatePDF(Bourse $bourse, $demande_id)
     {

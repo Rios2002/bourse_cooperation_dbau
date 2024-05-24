@@ -136,6 +136,19 @@ class Bourse extends Model
     {
         return $this->hasManyThrough(Filiere::class, AssocBourseFiliere::class, 'bourse_id', 'id', 'id', 'filiere_id');
     }
+    function formulaires()
+    {
+        $forms = $this->hasManyThrough(Formulaire::class, AssocBoursFormulaire::class, 'bourse_id', 'id', 'id', 'formulaire_id')->OrderBy('id')->get();
+        $i = $this->stepCount;
+        foreach ($forms as $f) {
+            $f->KeyStep = ++$i;
+        }
+        return $forms;
+    }
+    function CheckFormExists($form_id)
+    {
+        return  $this->hasManyThrough(Formulaire::class, AssocBoursFormulaire::class, 'bourse_id', 'id', 'id', 'formulaire_id')->where('formulaire_id', $form_id)->exists();
+    }
     function cycles()
     {
         return $this->cyclePossible();
@@ -146,7 +159,7 @@ class Bourse extends Model
     }
     function getStepCount()
     {
-        return $this->stepCount;
+        return $this->stepCount + $this->formulaires()->count();
     }
     function doitSaisirFiliere($CodeDiplome): bool
     {

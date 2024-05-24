@@ -36,7 +36,7 @@
             {!! $errors->first('CodePays', '<div class="invalid-feedback" role="alert"><strong>:message</strong></div>') !!}
         </div>
         <div class="col-lg-6 mb-2 mb20">
-            <strong> <label for="CodeAnneeAcademique" class="form-label">{{ __('CodeAnneeAcademique') }}</label>
+            <strong> <label for="CodeAnneeAcademique" class="form-label">{{ __('Année Academique') }}</label>
                 <!-- <strong class="text-danger"> * </strong> --> </strong>
             {{-- <input type="text" name="CodePays" class="form-control @error('CodePays') is-invalid @enderror rounded-05" value="{{ old('CodePays', $bourse?->CodePays) }}" id="code_pays" > --}}
 
