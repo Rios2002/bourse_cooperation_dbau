@@ -23,14 +23,14 @@ class AttributTypeChampsSeeder extends Seeder
             [
                 "CodeTypeChamp" => "SAISIE_COURTE",
                 "SpatieFunction" => "maxlength",
-                "LaravelValidationKey" => "max",
+                "LaravelValidationKey" => null,
                 "TypeValeur" => "integer",
                 "Description" => "Permet de définir le nombre maximum de caractères autorisés dans le champ de saisie"
             ],
             [
                 "CodeTypeChamp" => "SAISIE_COURTE",
                 "SpatieFunction" => "minlength",
-                "LaravelValidationKey" => "min",
+                "LaravelValidationKey" => null,
                 "TypeValeur" => "integer",
                 "Description" => "Permet de définir le nombre manimum de caractères autorisés dans le champ de saisie"
             ],
@@ -39,14 +39,14 @@ class AttributTypeChampsSeeder extends Seeder
             [
                 "CodeTypeChamp" => "SAISIE_LONGUE",
                 "SpatieFunction" => "maxlength",
-                "LaravelValidationKey" => "max",
+                "LaravelValidationKey" => null,
                 "TypeValeur" => "integer",
                 "Description" => "Permet de définir le nombre maximum de caractères autorisés dans le champ de saisie"
             ],
             [
                 "CodeTypeChamp" => "SAISIE_LONGUE",
                 "SpatieFunction" => "minlength",
-                "LaravelValidationKey" => "min",
+                "LaravelValidationKey" => null,
                 "TypeValeur" => "integer",
                 "Description" => "Permet de définir le nombre manimum de caractères autorisés dans le champ de saisie"
             ],

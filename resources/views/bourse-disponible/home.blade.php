@@ -14,9 +14,6 @@
                 <div class="card">
                     <div class="card-body">
                         <div class="text-center">
-
-                            {{-- <img src="https://flagcdn.com/256x192/{{ strtolower($brs->CodePays) }}.png" class="w-75"
-                                > --}}
                             <img src="https://flagcdn.com/{{ strtolower($brs->CodePays) }}.svg" class=" w-100 rounded-3 mb-3">
                         </div>
 
