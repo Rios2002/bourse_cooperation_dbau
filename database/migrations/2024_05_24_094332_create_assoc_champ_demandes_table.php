@@ -15,8 +15,8 @@ return new class extends Migration
     {
         Schema::create('assoc_champ_demandes', function (Blueprint $table) {
             $table->id();
-            $table->foreignIdFor(ChampFormulaire::class)->constrained("champ_formulaires", "id")->cascadeOnUpdate()->cascadeOnDelete();
             $table->foreignIdFor(Demande::class)->constrained("demandes")->cascadeOnUpdate()->cascadeOnDelete();
+            $table->foreignIdFor(ChampFormulaire::class)->constrained("champ_formulaires", "id")->cascadeOnUpdate()->cascadeOnDelete();
             $table->text("Saisi")->nullable();
             $table->timestamps();
         });
