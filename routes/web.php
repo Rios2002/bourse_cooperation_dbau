@@ -105,3 +105,4 @@ Route::get('bourse-postuler/{bourse}', [HomeController::class, 'postuler'])->nam
 // Route::resource('demandes', DemandeController::class);
 Route::redirect("/home", "bourse-en-cours");
 Route::redirect("/", "bourse-en-cours")->name('home');
+// TEST
