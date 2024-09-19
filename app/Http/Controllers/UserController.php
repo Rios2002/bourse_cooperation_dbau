@@ -3,11 +3,12 @@
 namespace App\Http\Controllers;
 
 use App\Models\User;
-use Illuminate\Http\RedirectResponse;
+use Illuminate\View\View;
 use Illuminate\Http\Request;
 use App\Http\Requests\UserRequest;
+use Spatie\Permission\Models\Role;
+use Illuminate\Http\RedirectResponse;
 use Illuminate\Support\Facades\Redirect;
-use Illuminate\View\View;
 
 class UserController extends Controller
 {
@@ -49,8 +50,10 @@ class UserController extends Controller
     public function show($id): View
     {
         $user = User::find($id);
+        $allRoles = Role::all();
+        $myRoles = $user->getRoleNames()->toArray();
 
-        return view('user.show', compact('user'));
+        return view('user.show', compact('user', 'allRoles', 'myRoles'));
     }
 
     /**
@@ -80,5 +83,16 @@ class UserController extends Controller
 
         return Redirect::route('users.index')
             ->with('success', 'User deleted successfully');
+    }
+
+    public function storeRole(Request $request, $user_id): RedirectResponse
+    {
+        $user = User::find($user_id);
+        $rolesIDs = $request->roles;
+        $user->roles()->sync($rolesIDs);
+
+
+        return Redirect::route('users.show', $user_id)
+            ->with('success', 'Role ajouté avec succès !');
     }
 }

@@ -36,6 +36,37 @@
                                 <input type="text" class="form-control rounded-05 my-1 text-dark"
                                     value="{{ $user->NPI }}" readonly>
                             </div>
+                            <hr>
+                            <div class="col-12">
+                                <strong class="text-dark ">Roles:</strong>
+
+
+                                <form action="{{ route('users.storeRole', $user->id) }}" method="post">
+                                    @csrf
+                                    <div class="row">
+
+                                        @foreach ($allRoles as $role)
+                                            <div class="col-lg-6">
+                                                <div class="form-check form-switch py-2 align-items-center ">
+                                                    <input class="form-check-input" type="checkbox"
+                                                        id="role-{{ $role->id }}" value="{{ $role->id }}"
+                                                        name="roles[]" @if (in_array($role->name, $myRoles)) checked @endif>
+                                                    <label class="form-check-label text-dark fs-5 ms-2 text-capitalize "
+                                                        for="role-{{ $role->id }}">
+                                                        {{ $role->name }}
+
+                                                    </label>
+                                                </div>
+                                            </div>
+                                        @endforeach
+                                        <div class="col-lg-12">
+                                            <button class="btn btn-success mt-4 fw-semibold  rounded-1">
+                                                Enregistrer
+                                            </button>
+                                        </div>
+                                    </div>
+                                </form>
+                            </div>
                         </div>
 
 

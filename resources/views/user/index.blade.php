@@ -39,6 +39,7 @@
                                         <th>Email</th>
                                         {{-- <th>Password</th> --}}
                                         <th>NPI</th>
+                                        <th>Roles</th>
 
                                         <th></th>
                                     </tr>
@@ -52,6 +53,13 @@
                                             <td>{{ $user->email }}</td>
                                             {{-- <td>{{ $user->password }}</td> --}}
                                             <td>{{ $user->NPI }}</td>
+                                            <td>
+                                                @if (!empty($user->getRoleNames()))
+                                                    @foreach ($user->getRoleNames() as $v)
+                                                        <label class="badge bg-success">{{ $v }}</label>
+                                                    @endforeach
+                                                @endif
+                                            </td>
 
                                             <td>
                                                 <div class="dropdown">
