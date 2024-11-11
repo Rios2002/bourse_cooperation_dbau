@@ -55,7 +55,7 @@
     <div class="col-lg-3">
         <strong class="text-dark ">Date Naissance:</strong>
         <input type="text" class="form-control rounded-05 my-1 text-dark"
-            value="{{ $demande->DateNaissance->format('d/m/Y') }}" readonly>
+            value="{{ $demande->DateNaissance?->format('d/m/Y') }}" readonly>
     </div>
 
     <div class="col-lg-4">
