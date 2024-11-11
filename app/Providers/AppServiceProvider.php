@@ -26,7 +26,7 @@ class AppServiceProvider extends ServiceProvider
             URL::forceScheme('https');
         }
         if ($this->app->environment('production')) {
-            \URL::forceRootUrl(\Config::get('app.url'));
+            \URL::forceRootUrl(env('APP_URL', 'http://localhost'));
         }
     }
 }
