@@ -20,10 +20,12 @@ use App\Http\Controllers\Api\AssocBourseFiliereController;
 use App\Http\Controllers\Api\AssocBoursePieceJointeController;
 use App\Http\Controllers\Api\AssocDemandePieceJointeController;
 use App\Http\Controllers\Api\AssocBourseDiplomeDisponibleController;
+use App\Http\Middleware\SetCustomHostname;
 
 // Route::get('/', function () {
 //     return view('welcome');
 // });
+
 
 Auth::routes();
 Route::get('theme-toggle', function () {
@@ -105,4 +107,8 @@ Route::get('bourse-postuler/{bourse}', [HomeController::class, 'postuler'])->nam
 // Route::resource('demandes', DemandeController::class);
 Route::redirect("/home", "bourse-en-cours");
 Route::redirect("/", "bourse-en-cours")->name('home');
-// TEST
+Route::get('/rt', function () {
+    echo route("bourses-disponible") . '<br>';
+    echo route("login") . '<br>';
+    return "ok";
+});
