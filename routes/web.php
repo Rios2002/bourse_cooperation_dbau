@@ -110,5 +110,5 @@ Route::redirect("/", "bourse-en-cours")->name('home');
 Route::get('/rt', function () {
     echo route("bourses-disponible") . '<br>';
     echo route("login") . '<br>';
-    return "ok";
+    return "ok<br>";
 });
