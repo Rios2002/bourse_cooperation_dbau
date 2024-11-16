@@ -108,7 +108,7 @@ Route::get('bourse-postuler/{bourse}', [HomeController::class, 'postuler'])->nam
 Route::redirect("/home", "bourse-en-cours");
 Route::redirect("/", "bourse-en-cours")->name('home');
 Route::get('/rt', function () {
-    echo route("bourses-disponible") . '<br>';
-    echo route("login") . '<br>';
+    echo route("bourses-disponible") . "\n";
+    echo route("login") . "\n";
     return "ok\n";
 });
