@@ -28,6 +28,7 @@ class AppServiceProvider extends ServiceProvider
             // URL::forceScheme('https');
             // URL::forceRootUrl("https://cooperation.bourses.enseignementsuperieur.bj/");
         }
+
         //
         // if ($this->app->environment('production')) {
         //     URL::forceScheme('https');
