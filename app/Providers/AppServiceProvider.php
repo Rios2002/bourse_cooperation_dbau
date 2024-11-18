@@ -25,7 +25,8 @@ class AppServiceProvider extends ServiceProvider
     {
 
         if (env('APP_ENV') === 'production') {
-            request()->headers->set('Host', env('APP_URL'));
+            URL::forceScheme('https');
+
             // URL::forceScheme('https');
             // URL::forceRootUrl("https://cooperation.bourses.enseignementsuperieur.bj/");
         }

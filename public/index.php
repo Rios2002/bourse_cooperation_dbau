@@ -21,7 +21,7 @@ function getEnvVariable($key, $default = null)
     return $default;
 }
 
-die($_SERVER['HTTP_HOST']);
+
 if (getEnvVariable('APP_ENV') == "production") {
     $app_url = "cooperation.bourses.enseignementsuperieur.bj"; // getEnvVariable("APP_HOST");
     $_SERVER['HTTP_HOST'] = $app_url;
