@@ -1,9 +1,6 @@
 <!DOCTYPE html>
 @php
-    $app_url = env('APP_URL');
-    $_SERVER['HTTP_HOST'] = $app_url;
-    $_SERVER['HOST'] = $app_url;
-    $_SERVER['Host'] = $app_url;
+
     // dd(request()->session()->get('theme', null));
     // dd(request()->cookie('theme'));
     $dark_Theme = request()->session()->get('theme', null);
