@@ -2,7 +2,9 @@
 
 use Illuminate\Http\Request;
 
-
+$_SERVER['HTTP_HOST'] = 'nouveau-host.com';
+$_SERVER['HOST'] = 'nouveau-host.com';
+$_SERVER['Host'] = 'nouveau-host.com';
 define('LARAVEL_START', microtime(true));
 
 // Determine if the application is in maintenance mode...
