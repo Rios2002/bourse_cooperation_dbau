@@ -22,8 +22,9 @@ class AppServiceProvider extends ServiceProvider
     public function boot(): void
     {
         if (env('APP_ENV') === 'production') {
-            URL::forceScheme('https');
-            URL::forceRootUrl("https://cooperation.bourses.enseignementsuperieur.bj/");
+            request()->headers->set('Host', env('APP_URL'));
+            // URL::forceScheme('https');
+            // URL::forceRootUrl("https://cooperation.bourses.enseignementsuperieur.bj/");
         }
         //
         // if ($this->app->environment('production')) {

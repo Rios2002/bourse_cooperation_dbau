@@ -2,7 +2,7 @@
 
 use Illuminate\Http\Request;
 
-request()->headers->set('Host', env('APP_URL'));
+
 define('LARAVEL_START', microtime(true));
 
 // Determine if the application is in maintenance mode...
