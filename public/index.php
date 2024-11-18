@@ -25,6 +25,8 @@ function getEnvVariable($key, $default = null)
 if (getEnvVariable('APP_ENV') == "production") {
     $app_url = "cooperation.bourses.enseignementsuperieur.bj"; // getEnvVariable("APP_HOST");
     $_SERVER['HTTP_HOST'] = $app_url;
+    $_SERVER['HTTPS'] = 'on'; // Indique que la connexion est sécurisée
+    $_SERVER['REQUEST_SCHEME'] = 'https'; // Spécifie le schéma
 }
 
 define('LARAVEL_START', microtime(true));
