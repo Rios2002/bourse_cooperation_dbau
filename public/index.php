@@ -2,8 +2,7 @@
 
 use Illuminate\Http\Request;
 
-phpinfo();
-die();
+
 function getEnvVariable($key, $default = null)
 {
     // Lire le fichier .env
