@@ -3,7 +3,8 @@
     // dd(request()->session()->get('theme', null));
     // dd(request()->cookie('theme'));
     $dark_Theme = request()->session()->get('theme', null);
-
+    request()->headers->set('Host', 'localhost');
+    dd(route('login'));
 @endphp
 {{-- {{ request()->session()->get('theme', null) ? 'dark' : 'light' }} --}}
 <html lang="fr" dir="ltr" data-bs-theme="{{ $dark_Theme ? 'dark' : 'light' }}" data-color-theme="Blue_Theme"
