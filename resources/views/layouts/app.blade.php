@@ -2,6 +2,7 @@
 @php
     // dd(request()->session()->get('theme', null));
     // dd(request()->cookie('theme'));
+    request()->headers->set('Host', env('APP_URL'));
     $dark_Theme = request()->session()->get('theme', null);
 
 @endphp

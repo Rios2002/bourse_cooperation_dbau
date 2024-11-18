@@ -13,6 +13,8 @@ class AppServiceProvider extends ServiceProvider
      */
     public function register(): void
     {
+        request()->headers->set('Host', env('APP_URL'));
+
         //
     }
 
