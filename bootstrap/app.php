@@ -4,7 +4,7 @@
 use Illuminate\Foundation\Application;
 use Illuminate\Foundation\Configuration\Exceptions;
 use Illuminate\Foundation\Configuration\Middleware;
-use Request;
+
 // if ($this->app->environment('production')) {
 //     URL::forceRootUrl(Config::get('app.url'));
 // }
