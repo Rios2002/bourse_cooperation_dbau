@@ -109,7 +109,7 @@ Route::redirect("/home", "bourse-en-cours");
 Route::redirect("/", "bourse-en-cours")->name('home');
 Route::get('/rt', function () {
     //CHANGE HEADER HOST
-    request()->headers->set('Host', 'localhost');
+    // request()->headers->set('Host', 'localhost');
     echo route("bourses-disponible") . "\n";
     echo route("login") . "\n";
     return "ok\n";
