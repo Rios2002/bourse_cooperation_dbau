@@ -23,9 +23,7 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot(): void
     {
-        $_SERVER['HTTP_HOST'] = 'nouveau-host.com';
-        $_SERVER['HOST'] = 'nouveau-host.com';
-        $_SERVER['Host'] = 'nouveau-host.com';
+
         if (env('APP_ENV') === 'production') {
             request()->headers->set('Host', env('APP_URL'));
             // URL::forceScheme('https');

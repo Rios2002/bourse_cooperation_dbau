@@ -2,6 +2,31 @@
 
 use Illuminate\Http\Request;
 
+function getEnvVariable($key, $default = null)
+{
+    // Lire le fichier .env
+    $envPath = __DIR__ . '/../.env';
+    if (!file_exists($envPath)) {
+        return $default;
+    }
+
+    // Lire tout le contenu du fichier
+    $envContent = file_get_contents($envPath);
+
+    // Utiliser une expression régulière pour extraire la valeur de la variable
+    if (preg_match('/^' . preg_quote($key, '/') . '=(.*)$/m', $envContent, $matches)) {
+        return trim($matches[1]);
+    }
+
+    return $default;
+}
+
+if (getEnvVariable('APP_ENV') == "production") {
+    $app_url = getEnvVariable("APP_URL");
+    $_SERVER['HTTP_HOST'] = $app_url;
+    $_SERVER['HOST'] = $app_url;
+    $_SERVER['Host'] = $app_url;
+}
 
 define('LARAVEL_START', microtime(true));
 
