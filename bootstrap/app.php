@@ -4,11 +4,12 @@
 use Illuminate\Foundation\Application;
 use Illuminate\Foundation\Configuration\Exceptions;
 use Illuminate\Foundation\Configuration\Middleware;
-
+use Request;
 // if ($this->app->environment('production')) {
 //     URL::forceRootUrl(Config::get('app.url'));
 // }
-request()->headers->set('Host', 'localhost');
+
+
 
 return Application::configure(basePath: dirname(__DIR__))
 
@@ -24,11 +25,10 @@ return Application::configure(basePath: dirname(__DIR__))
             'permission' => \Spatie\Permission\Middleware\PermissionMiddleware::class,
             'role_or_permission' => \Spatie\Permission\Middleware\RoleOrPermissionMiddleware::class,
         ]);
-        request()->headers->set('Host', 'localhost');
     })
     ->withExceptions(function (Exceptions $exceptions) {
         //
-        request()->headers->set('Host', 'localhost');
+
     })
 
     ->create();
