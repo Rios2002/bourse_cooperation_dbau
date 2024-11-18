@@ -24,10 +24,8 @@ function getEnvVariable($key, $default = null)
 if (getEnvVariable('APP_ENV') == "production") {
     $app_url = "cooperation.bourses.enseignementsuperieur.bj"; // getEnvVariable("APP_HOST");
     $_SERVER['HTTP_HOST'] = $app_url;
-    // $_SERVER['HOST'] = $app_url;
-    // $_SERVER['Host'] = $app_url;
 }
-die(getEnvVariable("APP_HOST"));
+
 define('LARAVEL_START', microtime(true));
 
 // Determine if the application is in maintenance mode...
