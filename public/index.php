@@ -23,10 +23,11 @@ function getEnvVariable($key, $default = null)
 
 
 if (getEnvVariable('APP_ENV') == "production") {
-    $app_url = "cooperation.bourses.enseignementsuperieur.bj"; // getEnvVariable("APP_HOST");
+    // $app_url = "cooperation.bourses.enseignementsuperieur.bj"; // getEnvVariable("APP_HOST");
+    $app_url = getEnvVariable("APP_HOST", "cooperation.bourses.enseignementsuperieur.bj");
     $_SERVER['HTTP_HOST'] = $app_url;
-    $_SERVER['HTTPS'] = 'on'; // Indique que la connexion est sécurisée
-    $_SERVER['REQUEST_SCHEME'] = 'https'; // Spécifie le schéma
+    $_SERVER['HTTPS'] = 'on';
+    $_SERVER['REQUEST_SCHEME'] = 'https';
 }
 
 define('LARAVEL_START', microtime(true));
