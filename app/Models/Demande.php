@@ -54,7 +54,9 @@ class Demande extends Model
 
     static public $static_steps = [
         1 => [
-            "title" => "Informations personnel", "subtitle" => "Civilité", "view" => "bourse-disponible.formulaire-statique.static-form-1",
+            "title" => "Informations personnel",
+            "subtitle" => "Civilité",
+            "view" => "bourse-disponible.formulaire-statique.static-form-1",
             "rules" => [
                 'NPI' => 'required|numeric|digits_between:8,15',
                 'Nom' => 'required|max:255',
@@ -66,7 +68,9 @@ class Demande extends Model
             ]
         ],
         2 => [
-            "title" => "Diplôme de base", "subtitle" => "Détails du diplôme", "view" => "bourse-disponible.formulaire-statique.static-form-2",
+            "title" => "Diplôme de base",
+            "subtitle" => "Détails du diplôme",
+            "view" => "bourse-disponible.formulaire-statique.static-form-2",
             "rules" => [
                 'SerieOuFiliereBase' => 'required|max:255',
                 'AnneeObtention' => 'required|numeric|digits:4|min:1900',
@@ -76,7 +80,9 @@ class Demande extends Model
             ]
         ],
         3 => [
-            "title" => "Filière de formation", "subtitle" => "Niveau , Cycle et filière sollicité", "view" => "bourse-disponible.formulaire-statique.static-form-3",
+            "title" => "Filière de formation",
+            "subtitle" => "Niveau , Cycle et filière sollicité",
+            "view" => "bourse-disponible.formulaire-statique.static-form-3",
             "rules" => [
 
                 // 'filiere_id' => 'required|exists:filieres,id',
@@ -90,7 +96,9 @@ class Demande extends Model
             ]
         ],
         4 => [
-            "title" => "Pièces jointes", "subtitle" => "Documents à fournir", "view" => "bourse-disponible.formulaire-statique.static-form-4",
+            "title" => "Pièces jointes",
+            "subtitle" => "Documents à fournir",
+            "view" => "bourse-disponible.formulaire-statique.static-form-4",
             "rules" => [
                 "pieceJointeID" => "required|exists:piece_jointes,id",
                 "pieceJointe" => "required|file|mimes:pdf,jpg,jpeg,png|max:2048"
@@ -149,13 +157,26 @@ class Demande extends Model
     {
         return [
             1 => [
-                'NPI', 'Nom', 'Prenom', 'DateNaissance', 'LieuNaissance', 'Sexe', 'CodeDiplome'
+                'NPI',
+                'Nom',
+                'Prenom',
+                'DateNaissance',
+                'LieuNaissance',
+                'Sexe',
+                'CodeDiplome'
             ],
             2 => [
-                'SerieOuFiliereBase', 'AnneeObtention', 'Moyenne', 'Mention', 'CycleSollicite'
+                'SerieOuFiliereBase',
+                'AnneeObtention',
+                'Moyenne',
+                'Mention',
+                'CycleSollicite'
             ],
             3 => [
-                'LibelleFiliere', 'StatutAllocataire', 'Contact', 'ContactParent'
+                'LibelleFiliere',
+                'StatutAllocataire',
+                'Contact',
+                'ContactParent'
             ]
         ];
     }
@@ -251,5 +272,22 @@ class Demande extends Model
     function userStr()
     {
         return $this->user()->first()->name . ' ( ' . $this->user()->first()->email . ' , id : ' . $this->user_id . ' )';
+    }
+
+    function filieresPossible()
+    {
+        if ($this->doitSaisirFiliere()) {
+            return null;
+        }
+        if ($this->CodeDiplome == null) {
+            return null;
+        }
+        $cycleCible = $this->DiplomeDeBase->CycleCible;
+        $fil_ids = $this->Bourse->assocBourseFilieres()->where("CodeCycle", $cycleCible)->pluck("filiere_id");
+
+        return Filiere::whereIn(
+            'id',
+            $fil_ids
+        )->get();
     }
 }

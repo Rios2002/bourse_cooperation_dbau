@@ -103,14 +103,13 @@ Route::get('bourse-postuler/{bourse}', [HomeController::class, 'postuler'])->nam
 // Route::apiResource('assoc-bourse-filieres', AssocBourseFiliereController::class);
 // Route::apiResource('assoc-demande-piece-jointes', AssocDemandePieceJointeController::class);
 
-
 // Route::resource('demandes', DemandeController::class);
 Route::redirect("/home", "bourse-en-cours");
 Route::redirect("/", "bourse-en-cours")->name('home');
-Route::get('/rt', function () {
-    //CHANGE HEADER HOST
-    // request()->headers->set('Host', 'localhost');
-    echo route("bourses-disponible") . "\n";
-    echo route("login") . "\n";
-    return "ok\n";
-});
+// Route::get('/rt', function () {
+//     //CHANGE HEADER HOST
+//     // request()->headers->set('Host', 'localhost');
+//     echo route("bourses-disponible") . "\n";
+//     echo route("login") . "\n";
+//     return "ok\n";
+// });

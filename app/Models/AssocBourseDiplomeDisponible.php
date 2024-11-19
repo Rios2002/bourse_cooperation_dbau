@@ -20,7 +20,7 @@ use Illuminate\Database\Eloquent\Model;
  */
 class AssocBourseDiplomeDisponible extends Model
 {
-    
+
     protected $perPage = 20;
 
     /**
@@ -36,7 +36,6 @@ class AssocBourseDiplomeDisponible extends Model
      */
     public function coopBourse()
     {
-        return $this->belongsTo(\App\Models\CoopBourse::class, 'bourse_id', 'id');
+        return $this->belongsTo(\App\Models\Bourse::class, 'bourse_id', 'id');
     }
-    
 }

@@ -23,7 +23,7 @@
                 <select name="filiere_id"
                     class="form-control select2 @error('filiere_id') is-invalid @enderror rounded-05" id="filiere_id">
                     <option value="">-- Sélectionner --</option>
-                    @foreach ($filieresBourses as $filiere)
+                    @foreach ($demande->filieresPossible() ?? [] as $filiere)
                         <option value="{{ $filiere->id }}"
                             {{ old('filiere_id', $demande?->filiere_id) == $filiere->id ? 'selected' : '' }}>
                             {{ $filiere->LibelleFiliere }}
