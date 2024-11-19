@@ -7,12 +7,14 @@
 
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="keywords" content="DBAU">
-    <meta name="description" content="DBAU">
+    <meta name="description" content="Direction des Bourses et Aides Universitaires">
 
     <title>DBAU</title>
     <link rel="canonical" href="/" />
     <!-- Favicon icon -->
-    <link rel="icon" type="image/png" sizes="16x16" href="{{ url('assets/images/favicon.png') }}">
+    <link rel="icon" type="image/png" sizes="16x16" href="{{ asset('mesrs.png') }}">
+
+
     <!-- Custom CSS -->
     <link href="{{ url('dist/css/style.min.css') }}" rel="stylesheet">
 
@@ -24,7 +26,7 @@
     <!-- ============================================================== -->
     <!-- Preloader - style you can find in spinners.css -->
     <!-- ============================================================== -->
-    
+
     @yield('pre-content')
 
     <style>
