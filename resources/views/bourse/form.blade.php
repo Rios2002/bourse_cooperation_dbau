@@ -59,7 +59,7 @@
                 <div class="d-flex align-items-center mb-2">
                     <a href="{{ asset($bourse->Communique) }}" target="_blank" class="btn btn-primary rounded-1">Voir
                         le fichier</a>
-                    <span class="ml-2">{{ $bourse->Communique }}</span>
+
                 </div>
             @endif
             <input type="file" name="Communique" accept=".pdf"
