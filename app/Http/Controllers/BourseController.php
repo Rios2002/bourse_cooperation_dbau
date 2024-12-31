@@ -53,7 +53,8 @@ class BourseController extends Controller
     {
         $all = $request->validated();
         if ($request->hasFile('Communique')) {
-            $all['Communique'] = Storage::url($request->file('Communique')->store('public/communiques'));
+
+            $all['Communique'] = Storage::url($request->file('Communique')->store("communiques", "public"));
         }
         Bourse::create($all);
 
@@ -107,8 +108,10 @@ class BourseController extends Controller
     public function update(BourseRequest $request, Bourse $bourse): RedirectResponse
     {
         $all = $request->validated();
+        if ($request->hasFile('Communique')) {
+            $all['Communique'] = Storage::url($request->file('Communique')->store("communiques", "public"));
+        }
         $bourse->update($all);
-
         return Redirect::route('bourses.index')
             ->with('success', 'Bourse a été mis(e) à jour avec succes !');
     }

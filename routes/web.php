@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\PayController;
@@ -8,6 +9,7 @@ use App\Http\Controllers\RoleController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\CycleController;
 use App\Http\Controllers\BourseController;
+use App\Http\Middleware\SetCustomHostname;
 use App\Http\Controllers\DemandeController;
 use App\Http\Controllers\FiliereController;
 use App\Http\Controllers\TypeChampController;
@@ -20,7 +22,6 @@ use App\Http\Controllers\Api\AssocBourseFiliereController;
 use App\Http\Controllers\Api\AssocBoursePieceJointeController;
 use App\Http\Controllers\Api\AssocDemandePieceJointeController;
 use App\Http\Controllers\Api\AssocBourseDiplomeDisponibleController;
-use App\Http\Middleware\SetCustomHostname;
 
 // Route::get('/', function () {
 //     return view('welcome');
@@ -113,3 +114,4 @@ Route::redirect("/", "bourse-en-cours")->name('home');
 //     echo route("login") . "\n";
 //     return "ok\n";
 // });
+// Route::get('testAPI', [Controller::class, 'testAPI']);
