@@ -190,7 +190,7 @@ class HomeController extends Controller
     {
         $demande = Demande::where("user_id", auth()->id())->where("bourse_id", $bourse->id)
             ->where("id", $demande_id)->first();
-        if (is_null($demande)) {
+        if (is_null($demande) && !auth()->user()->hasRole("Super-admin")) {
             return Redirect::route('bourses-disponible')
                 ->withErrors("Une erreur s'est produite, veuillez réessayer");
         }
