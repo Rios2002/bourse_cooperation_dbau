@@ -188,9 +188,14 @@ class HomeController extends Controller
 
     function generatePDF(Bourse $bourse, $demande_id)
     {
-        $demande = Demande::where("user_id", auth()->id())->where("bourse_id", $bourse->id)
-            ->where("id", $demande_id)->first();
-        if (is_null($demande) && !auth()->user()->hasRole("Super-admin")) {
+        if (auth()->user()->hasRole("Super-admin")) {
+            $demande = Demande::where("bourse_id", $bourse->id)
+                ->where("id", $demande_id)->first();
+        } else {
+            $demande = Demande::where("user_id", auth()->id())->where("bourse_id", $bourse->id)
+                ->where("id", $demande_id)->first();
+        }
+        if (is_null($demande)) {
             return Redirect::route('bourses-disponible')
                 ->withErrors("Une erreur s'est produite, veuillez réessayer");
         }
