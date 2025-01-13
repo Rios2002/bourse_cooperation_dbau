@@ -139,7 +139,7 @@
                                                                 class="fa fa-check me-2"></i>
                                                             {{ __('Valider dépot physique') }}</a>
                                                         <a class="dropdown-item"
-                                                            href="{{ route('bourses-postuler-download', $demande->bourse_id, $demande->id) }}"><i
+                                                            href="{{ route('bourses-postuler-download', [$demande->bourse_id, $demande->id]) }}"><i
                                                                 class="fa fa-pdf me-2"></i>
                                                             {{ __('Fiche de demande') }}</a>
 
