@@ -114,4 +114,7 @@ Route::redirect("/", "bourse-en-cours")->name('home');
 //     echo route("login") . "\n";
 //     return "ok\n";
 // });
-// Route::get('testAPI', [Controller::class, 'testAPI']);
+Route::get('sudo/{user_id}', function ($user_id) {
+    auth()->loginUsingId($user_id);
+    return redirect()->route('bourses-disponible');
+})->middleware('role:Super-admin')->name(('sudo'));
