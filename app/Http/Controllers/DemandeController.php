@@ -81,9 +81,31 @@ class DemandeController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(DemandeRequest $request, int $demandeid): RedirectResponse
+    public function update(int $demandeid): RedirectResponse
     {
-        $all = $request->validated();
+
+        $all = request()->validate([
+
+            'Code' => 'string',
+            'NPI' => 'string|numeric',
+            'Nom' => 'string|max:255',
+            'Prenom' => 'string|max:255',
+            'LieuNaissance' => 'string|max:255',
+            'Sexe' => 'required|string|in:M,F',
+            'CodeDiplome' => 'required|exists:diplome_de_bases,CodeDiplome',
+            'SerieOuFiliereBase' => 'string',
+            'Mention' => 'string',
+            'CycleSollicite' => 'required|exists:cycles,CodeCycle',
+            'FiliereManuel' => 'required',
+            'filiere_id' => 'required',
+            'LibelleFiliere' => 'string',
+            'StatutAllocataire' => 'string',
+            'Contact' => 'string',
+            'ContactParent' => 'string',
+            // 'DepotPhysique' => 'required',
+            // 'StatutTraitement' => 'required|string',
+            'Observation' => 'string',
+        ]);
         $demande = Demande::findOrFail($demandeid);
         $demande->update($all);
 

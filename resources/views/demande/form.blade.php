@@ -195,7 +195,7 @@
                 '<div class="invalid-feedback" role="alert"><strong>:message</strong></div>',
             ) !!}
         </div>
-        <div class="col-lg-6 form-group mb-2 mb20">
+        {{-- <div class="col-lg-6 form-group mb-2 mb20">
             <strong> <label for="depot_physique" class="form-label">{{ __('Depotphysique') }}</label>
                 <!-- <strong class="text-danger"> * </strong> --> </strong>
             <input type="text" name="DepotPhysique"
@@ -216,7 +216,7 @@
                 'StatutTraitement',
                 '<div class="invalid-feedback" role="alert"><strong>:message</strong></div>',
             ) !!}
-        </div>
+        </div> --}}
         <div class="col-lg-6 form-group mb-2 mb20">
             <strong> <label for="observation" class="form-label">{{ __('Observation') }}</label>
                 <!-- <strong class="text-danger"> * </strong> --> </strong>
