@@ -1,7 +1,7 @@
 <div class="">
     <div class="row">
 
-        <div class="col-lg-6 form-group mb-2 mb20">
+        {{-- <div class="col-lg-6 form-group mb-2 mb20">
             <strong> <label for="bourse_id" class="form-label">{{ __('Bourse Id') }}</label>
                 <!-- <strong class="text-danger"> * </strong> --> </strong>
             <input type="text" name="bourse_id" class="form-control @error('bourse_id') is-invalid @enderror rounded-05"
@@ -21,7 +21,7 @@
             <input type="text" name="Code" class="form-control @error('Code') is-invalid @enderror rounded-05"
                 value="{{ old('Code', $demande?->Code) }}" id="code">
             {!! $errors->first('Code', '<div class="invalid-feedback" role="alert"><strong>:message</strong></div>') !!}
-        </div>
+        </div> --}}
 
 
         <div class="col-lg-6 form-group mb-2 mb20">
@@ -48,9 +48,9 @@
         <div class="col-lg-6 form-group mb-2 mb20">
             <strong> <label for="date_naissance" class="form-label">{{ __('Datenaissance') }}</label>
                 <!-- <strong class="text-danger"> * </strong> --> </strong>
-            <input type="text" name="DateNaissance"
+            <input type="date" name="DateNaissance"
                 class="form-control @error('DateNaissance') is-invalid @enderror rounded-05"
-                value="{{ old('DateNaissance', $demande?->DateNaissance) }}" id="date_naissance">
+                value="{{ old('DateNaissance', $demande?->DateNaissance->format('Y-m-d')) }}" id="date_naissance">
             {!! $errors->first(
                 'DateNaissance',
                 '<div class="invalid-feedback" role="alert"><strong>:message</strong></div>',
@@ -109,16 +109,14 @@
         <div class="col-lg-6 form-group mb-2 mb20">
             <strong> <label for="moyenne" class="form-label">{{ __('Moyenne') }}</label>
                 <!-- <strong class="text-danger"> * </strong> --> </strong>
-            <input type="text" name="Moyenne"
-                class="form-control @error('Moyenne') is-invalid @enderror rounded-05"
+            <input type="text" name="Moyenne" class="form-control @error('Moyenne') is-invalid @enderror rounded-05"
                 value="{{ old('Moyenne', $demande?->Moyenne) }}" id="moyenne">
             {!! $errors->first('Moyenne', '<div class="invalid-feedback" role="alert"><strong>:message</strong></div>') !!}
         </div>
         <div class="col-lg-6 form-group mb-2 mb20">
             <strong> <label for="mention" class="form-label">{{ __('Mention') }}</label>
                 <!-- <strong class="text-danger"> * </strong> --> </strong>
-            <input type="text" name="Mention"
-                class="form-control @error('Mention') is-invalid @enderror rounded-05"
+            <input type="text" name="Mention" class="form-control @error('Mention') is-invalid @enderror rounded-05"
                 value="{{ old('Mention', $demande?->Mention) }}" id="mention">
             {!! $errors->first('Mention', '<div class="invalid-feedback" role="alert"><strong>:message</strong></div>') !!}
         </div>

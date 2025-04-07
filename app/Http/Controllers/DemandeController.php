@@ -81,9 +81,10 @@ class DemandeController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(DemandeRequest $request, Demande $demande): RedirectResponse
+    public function update(DemandeRequest $request, int $demandeid): RedirectResponse
     {
         $all = $request->validated();
+        $demande = Demande::findOrFail($demandeid);
         $demande->update($all);
 
         return Redirect::route('demandes.index')

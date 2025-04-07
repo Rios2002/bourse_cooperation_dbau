@@ -47,6 +47,9 @@ use Illuminate\Database\Eloquent\Model;
 class Demande extends Model
 {
 
+    protected $cast = [
+        "DateNaissance" => "datetime",
+    ];
     protected $perPage = 20;
     protected $casts = [
         'DateNaissance' => 'datetime',
