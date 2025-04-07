@@ -104,7 +104,7 @@ class DemandeController extends Controller
             'ContactParent' => 'string',
             // 'DepotPhysique' => 'required',
             // 'StatutTraitement' => 'required|string',
-            'Observation' => 'string',
+            'Observation' => 'nullable|string',
         ]);
         $demande = Demande::findOrFail($demandeid);
         $demande->update($all);
