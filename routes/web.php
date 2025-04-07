@@ -91,7 +91,7 @@ Route::middleware(['auth'])->group(function () {
 });
 
 Route::middleware(['auth', 'permission:gerer traitement des bourses'])->group(function () {
-    Route::resource('demandes', DemandeController::class, ["only" => ["index", "show", 'update', "destroy"]]);
+    Route::resource('demandes', DemandeController::class, ["only" => ["index", "show", "edit", 'update', "destroy"]]);
     Route::get('demandes/{demande}/valider-depot', [DemandeController::class, 'validerDepot'])->name('demandes.valider-depot');
 });
 

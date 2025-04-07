@@ -146,9 +146,9 @@
                                                         <a class="dropdown-item" data-bs-toggle="modal"
                                                             data-bs-target="#modalDemande{{ $demande->id }}"><i
                                                                 class="fa fa-fw fa-eye"></i> {{ __('Détails') }}</a>
-                                                        {{-- <a class="dropdown-item"
+                                                        <a class="dropdown-item"
                                                             href="{{ route('demandes.show', $demande->id) }}"><i
-                                                                class="fa fa-fw fa-eye"></i> {{ __('Modifier') }}</a> --}}
+                                                                class="fa fa-fw fa-eye"></i> {{ __('Modifier') }}</a>
 
                                                         <div class="dropdown-divider"></div>
                                                         <form action="{{ route('demandes.destroy', $demande->id) }}"
